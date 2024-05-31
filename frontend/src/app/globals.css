@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    direction: rtl;
+}
+
+/* Custom scrollbar styling */
+#rss_feed::-webkit-scrollbar {
+    width: 12px;
+}
+
+#rss_feed::-webkit-scrollbar-thumb {
+    background-color: #888; /* Change this color to your preference */
+    border-radius: 10px;
+    border: 3px solid #f1f1f1; /* Adds space around the scrollbar thumb */
+}
+
+#rss_feed::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Change this color to your preference */
+}
+
+#rss_feed {
+    scrollbar-color: #888 #f1f1f1; /* For Firefox */
+    scrollbar-width: thin; /* For Firefox */
+    direction: ltr; /* Ensure scrollbar appears on the right */
+}

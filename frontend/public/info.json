@@ -1,0 +1,51 @@
+{
+  "items": {
+    "bootstrap": [
+      { "id": 1, "type": "image", "src": "/images/image1.jpg", "alt": "Image 1", "priority": true },
+      { "id": 2, "type": "image", "src": "/images/image2.jpg", "alt": "Image 2", "priority": false },
+      { "id": 3, "type": "video", "src": "/videos/video.mp4", "alt": "Video" }
+    ]
+  },
+  "soldiers": [
+    { "id": 1, "name": "פלוני אלמוני", "rank": "סגן" },
+    { "id": 2, "name": "פלונית אלמונית", "rank": "סמ\"ר" }
+  ],
+  "stories": {
+    "family": [
+      { "id": 1, "title": "כותרת ראשית", "content": "תוכן ראשי", "user_id": 1, "soldier_id": 1,
+        "replies": [
+          { "content": "תגובה ראשית", "user_id": 1, "soldier_id": 1 },
+          { "content": "תגובה שניה", "user_id": 2, "soldier_id": 2 }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "כותרת שניה",
+        "content": "תוכן שני",
+        "user_id": 2,
+        "soldier_id": 2,
+        "replies": [
+          {
+            "content": "תגובה ראשית",
+            "user_id": 1
+          },
+          {
+            "content": "תגובה שניה",
+            "user_id": 2
+          }
+        ]
+      }
+    ],
+    "public": [
+        { "id": 1, "title": "כותרת ראשית", "content": "תוכן ראשי", "user_id": 1, "soldier_id": 1, "replies": [
+            { "id": 1, "content": "תגובה ראשית", "user_id": 1, "soldier_id": 1 },
+            { "id": 2, "content": "תגובה שניה", "user_id": 2, "soldier_id": 2 }
+        ] },
+        { "id": 2, "title": "כותרת שניה", "content": "תוכן שני", "user_id": 2, "soldier_id": 2, "replies": [
+            { "id": 1, "content": "תגובה ראשית", "user_id": 1, "soldier_id": 1 },
+            { "id": 2, "content": "תגובה שניה", "user_id": 2, "soldier_id": 2 }
+        ] }
+    ]
+  }
+}
+

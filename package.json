@@ -1,0 +1,18 @@
+{
+  "name": "sharon_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run install:all && concurrently \"npm run start --prefix ./backend\" \"npm run start --prefix ./frontend\"",
+    "install:all": "npm-run-all --parallel install:frontend install:backend",
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && npm install"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "concurrently": "^8.2.2"
+  }
+}
