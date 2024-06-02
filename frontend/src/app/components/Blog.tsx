@@ -8,6 +8,8 @@ interface Soldier {
     id: number;
     name: string;
     rank: string;
+    image: string;
+    unit: string;
 }
 
 interface BlogProps {
@@ -16,11 +18,11 @@ interface BlogProps {
 }
 
 interface Story {
-    user_id: number;
-    soldier_id: number;
+    user_name: string;
+    soldier_name: string;
     image: string;
     content: string;
-    replies: { id: number; publisher: string; content: string }[];
+    replies: { content: string; user_name: string; }[];
 }
 
 const Blog: React.FC<BlogProps> = ({ title, initial_stories }) => {
@@ -28,21 +30,21 @@ const Blog: React.FC<BlogProps> = ({ title, initial_stories }) => {
     const [stories, setStories] = useState<Story[]>(initial_stories || []);
     const [newStory, setNewStory] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
-    const [selectedSoldier, setSelectedSoldier] = useState(soldiers[0].id);
-    const [publisher, setPublisher] = useState(0);
+    const [selectedSoldier, setSelectedSoldier] = useState(soldiers[0].name);
+    const [publisher, setPublisher] = useState('');
 
     const handlePublish = () => {
         if (newStory.trim() !== '') {
             const newStoryObject: Story = {
-                user_id: publisher,
-                soldier_id: selectedSoldier,
+                user_name: publisher,
+                soldier_name: selectedSoldier,
                 image: '/images/image1.jpg', // Example image, adjust as needed
                 content: newStory,
                 replies: []
             };
             setStories([newStoryObject, ...stories]);
             setNewStory('');
-            setPublisher(0);
+            setPublisher('');
         }
     };
 
@@ -58,19 +60,11 @@ const Blog: React.FC<BlogProps> = ({ title, initial_stories }) => {
         <div className="p-4">
             <h1 className="text-2xl font-bold mb-4">{title}</h1>
             <div className="mb-4">
-                <label className="block mb-2">Publisher:</label>
-                <input
-                    type="text"
-                    className="w-full p-2 border rounded mb-4"
-                    value={publisher}
-                    onChange={(e) => setPublisher(+e.target.value)}
-                    placeholder="Publisher's Name"
-                />
                 <label className="block mb-2">נופל:</label>
                 <select
                     className="w-full p-2 border rounded mb-4"
                     value={selectedSoldier}
-                    onChange={(e) => setSelectedSoldier(+e.target.value)}
+                    onChange={(e) => setSelectedSoldier(e.target.value)}
                 >
                     {soldiers.map((soldier, index) => (
                         <option key={index} value={soldier.id}>
@@ -83,10 +77,10 @@ const Blog: React.FC<BlogProps> = ({ title, initial_stories }) => {
                     rows={3}
                     value={newStory}
                     onChange={(e) => setNewStory(e.target.value)}
-                    placeholder="Write a new story..."
+                    placeholder="כתוב סיפור חדש..."
                 ></textarea>
                 <button onClick={handlePublish} className="mt-2 p-2 bg-blue-500 text-white rounded">
-                    Publish
+                    פרסם
                 </button>
             </div>
             <div className="mb-4">
@@ -95,7 +89,7 @@ const Blog: React.FC<BlogProps> = ({ title, initial_stories }) => {
                     className="w-full p-2 border rounded"
                     value={searchTerm}
                     onChange={handleSearch}
-                    placeholder="Search stories..."
+                    placeholder="חפש סיפורים..."
                 />
             </div>
             <div>
@@ -103,8 +97,8 @@ const Blog: React.FC<BlogProps> = ({ title, initial_stories }) => {
                     filteredStories.map((story, index) => (
                         <StoryCard
                             key={index}
-                            user_id={story.user_id}
-                            soldier_id={story.soldier_id}
+                            user_name={story.user_name}
+                            soldier_name={story.soldier_name}
                             image={story.image}
                             content={story.content}
                             initialReplies={story.replies}

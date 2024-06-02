@@ -7,45 +7,44 @@
     ]
   },
   "soldiers": [
-    { "id": 1, "name": "פלוני אלמוני", "rank": "סגן" },
-    { "id": 2, "name": "פלונית אלמונית", "rank": "סמ\"ר" }
+    { "id": 1, "name": "פלוני אלמוני", "rank": "סגן", "unit": "פלוגת צנחנים", "image": "/images/image1.jpg" },
+    { "id": 2, "name": "פלונית אלמונית", "rank": "סמ\"ר", "unit": "פלוגת צנחנים", "image": "/images/image2.jpg" }
   ],
-  "stories": {
-    "family": [
-      { "id": 1, "title": "כותרת ראשית", "content": "תוכן ראשי", "user_id": 1, "soldier_id": 1,
+  "stories": [
+      { "id": 1, "title": "כותרת ראשית", "content": "תוכן ראשי", "user_name": "דין", "soldier_name": "פלוני אלמוני", "image": "/images/image1.jpg",
+        "family": true,
         "replies": [
-          { "content": "תגובה ראשית", "user_id": 1, "soldier_id": 1 },
-          { "content": "תגובה שניה", "user_id": 2, "soldier_id": 2 }
+          { "content": "תגובה ראשית", "user_name": "שרון" },
+          { "content": "תגובה שניה", "user_name": "דין" }
         ]
       },
       {
         "id": 2,
         "title": "כותרת שניה",
         "content": "תוכן שני",
-        "user_id": 2,
-        "soldier_id": 2,
+        "user_name": "שרון",
+        "soldier_name": "פלונית אלמונית",
+        "family": true,
+        "image": "/images/image2.jpg",
         "replies": [
           {
             "content": "תגובה ראשית",
-            "user_id": 1
+            "user_name": "דין"
           },
           {
             "content": "תגובה שניה",
-            "user_id": 2
+            "user_name": "שרון"
           }
         ]
-      }
-    ],
-    "public": [
-        { "id": 1, "title": "כותרת ראשית", "content": "תוכן ראשי", "user_id": 1, "soldier_id": 1, "replies": [
-            { "id": 1, "content": "תגובה ראשית", "user_id": 1, "soldier_id": 1 },
-            { "id": 2, "content": "תגובה שניה", "user_id": 2, "soldier_id": 2 }
+      },
+        { "id": 3, "title": "כותרת ראשית", "content": "תוכן ראשי", "user_name": "דין", "soldier_name": "פלוני אלמוני", "family": false, "image": "/images/image1.jpg", "replies": [
+            { "content": "תגובה ראשית", "user_name": "שרון" },
+            { "content": "תגובה שניה", "user_name": "דין" }
         ] },
-        { "id": 2, "title": "כותרת שניה", "content": "תוכן שני", "user_id": 2, "soldier_id": 2, "replies": [
-            { "id": 1, "content": "תגובה ראשית", "user_id": 1, "soldier_id": 1 },
-            { "id": 2, "content": "תגובה שניה", "user_id": 2, "soldier_id": 2 }
+        { "id": 4, "title": "כותרת שניה", "content": "תוכן שני", "user_name": "שרון", "soldier_name": "פלונית אלמונית", "family": false, "image": "/images/image2.jpg", "replies": [
+            { "content": "תגובה ראשית", "user_name": "דין" },
+            { "content": "תגובה שניה", "user_name": "שרון" }
         ] }
     ]
-  }
 }
 
