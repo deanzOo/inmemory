@@ -5,16 +5,21 @@ export default function RSSFeed() {
     const [rssFeed, setRssFeed] = useState([]);
 
     useEffect(() => {
-        const fetchRSS = async () => {
-            const response = await fetch('/api/rss');
-            if (response.ok) {
-                const data = await response.json();
-                setRssFeed(data);
-            } else {
-                console.error('Failed to fetch RSS feed');
+        async function fetchRSSData() {
+            try {
+                const response = await fetch('/api/rss-feed');
+                if (response.ok) {
+                    const data = await response.json();
+                    setRssFeed(data);
+                } else {
+                    console.error('Failed to fetch RSS feed');
+                }
+            } catch (error) {
+                console.error('Error fetching RSS feed:', error);
+                setRssFeed([]);
             }
-        };
-        fetchRSS().then(r => r);
+        }
+        fetchRSSData().then(r => r);
     }, []);
 
     return (

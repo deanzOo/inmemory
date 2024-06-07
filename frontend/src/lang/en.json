@@ -1,0 +1,21 @@
+{
+  "website.title": "Memorial",
+  "website..meta.description": "Memorial for the fallen of the IDF's in the Swords of Steel War",
+  "layout.header.languages.label": "Change language",
+  "layout.header.languages.he": "Hebrew",
+  "layout.header.languages.en": "English",
+  "layout.header.link.login": "Login",
+  "layout.header.link.register": "Register",
+  "layout.header.link.candle": "Light a Candle",
+  "layout.header.link.homepage": "Homepage",
+  "layout.header.link.about": "About",
+  "layout.sidebar.link.familystories": "Family Stories",
+  "layout.sidebar.link.publicstories": "Fallen Stories",
+  "layout.sidebar.link.donations": "Donations",
+  "layout.footer.link.contact": "Contact",
+  "layout.footer.link.accessibility": "Accessibility",
+  "layout.footer.link.privacy": "Privacy",
+  "layout.footer.link.map": "Map",
+  "page.home.header": "Welcome to the Memorial Website",
+  "page.home.search.label": "Search..."
+}

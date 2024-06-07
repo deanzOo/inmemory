@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import Blog from "@/app/components/Blog";
-import info from "../../../public/info.json";
+import Blog from "@/components/Blog";
+import info from "../../../../public/info.json";
 
 const PublicBlog = () => {
     let initial_stories = info.stories.filter(story => !story.family)

@@ -2,7 +2,7 @@
   "items": {
     "bootstrap": [
       { "id": 1, "type": "image", "src": "/images/image1.jpg", "alt": "Image 1", "priority": true },
-      { "id": 2, "type": "image", "src": "/images/image2.jpg", "alt": "Image 2", "priority": false },
+      { "id": 2, "type": "image", "src": "/images/image2.jpg", "alt": "Image 2", "priority": true },
       { "id": 3, "type": "video", "src": "/videos/video.mp4", "alt": "Video" }
     ]
   },

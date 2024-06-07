@@ -1,6 +1,6 @@
 'use client';
 import { SetStateAction, useState} from "react";
-import info from "../../../public/info.json";
+import info from "../../public/info.json";
 import {Carousel} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";

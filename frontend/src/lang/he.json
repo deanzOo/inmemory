@@ -1,0 +1,21 @@
+{
+  "website.title": "אתר הנצחה",
+  "website..meta.description": "לזכר חללי מערכות ההגנה לצבא ההגנה לישראל במלחמת חרבות ברזל.",
+  "layout.header.languages.label": "שנה שפה",
+  "layout.header.languages.he": "עברית",
+  "layout.header.languages.en": "אנגלית",
+  "layout.header.link.login": "התחבר",
+  "layout.header.link.register": "הרשם",
+  "layout.header.link.candle": "הדלק נר",
+  "layout.header.link.homepage": "דף הבית",
+  "layout.header.link.about": "אודות",
+  "layout.sidebar.link.familystories": "סיפורי משפחות",
+  "layout.sidebar.link.publicstories": "סיפורי נופלים",
+  "layout.sidebar.link.donations": "תרומות",
+  "layout.footer.link.contact": "צור קשר",
+  "layout.footer.link.accessibility": "נגישות",
+  "layout.footer.link.privacy": "פרטיות",
+  "layout.footer.link.map": "מפת האתר",
+  "page.home.header": "ברוכים הבאים לאתר הנצחה",
+  "page.home.search.label": "חפש..."
+}

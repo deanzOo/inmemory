@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import StoryCard from './StoryCard';
-import info from '../../../public/info.json';
+import info from '../../public/info.json';
 import Select from 'react-select';
 
 interface Soldier {
