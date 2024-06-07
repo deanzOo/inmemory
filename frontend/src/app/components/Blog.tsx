@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import StoryCard from './StoryCard';
 import info from '../../../public/info.json';
+import Select from 'react-select';
 
 interface Soldier {
     id: number;
@@ -30,14 +31,15 @@ const Blog: React.FC<BlogProps> = ({ title, initial_stories }) => {
     const [stories, setStories] = useState<Story[]>(initial_stories || []);
     const [newStory, setNewStory] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
-    const [selectedSoldier, setSelectedSoldier] = useState(soldiers[0].name);
-    const [publisher, setPublisher] = useState('');
+    const [selectedSoldier, setSelectedSoldier] = useState(soldiers[0]);
+    const [selectedSoldierForStories, setSelectedSoldierForStories] = useState(soldiers[0]);
+    const [publisher, setPublisher] = useState('סטטי זמני');
 
     const handlePublish = () => {
         if (newStory.trim() !== '') {
             const newStoryObject: Story = {
                 user_name: publisher,
-                soldier_name: selectedSoldier,
+                soldier_name: selectedSoldier.name,
                 image: '/images/image1.jpg', // Example image, adjust as needed
                 content: newStory,
                 replies: []
@@ -48,30 +50,38 @@ const Blog: React.FC<BlogProps> = ({ title, initial_stories }) => {
         }
     };
 
-    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(event.target.value);
-    };
+    const handleSelectChange = (newValue: any) => {
+        setSelectedSoldier(newValue);
+    }
+
+    const handleSelectSoldierForStories = (newValue: any) => {
+        // filter stories by selected soldier
+        if (newValue) {
+            setStories(initial_stories?.filter(story => newValue.name.includes(story.soldier_name)) || []);
+        } else {
+            setStories(initial_stories || []);
+        }
+    }
 
     const filteredStories = stories.filter(story =>
         story.content.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
-        <div className="p-4">
-            <h1 className="text-2xl font-bold mb-4">{title}</h1>
-            <div className="mb-4">
+        <div id="content" className="px-4 align-items-center">
+            <div className="w-75 mb-4">
                 <label className="block mb-2">נופל:</label>
-                <select
-                    className="w-full p-2 border rounded mb-4"
+                <Select
+                    options={soldiers}
                     value={selectedSoldier}
-                    onChange={(e) => setSelectedSoldier(e.target.value)}
-                >
-                    {soldiers.map((soldier, index) => (
-                        <option key={index} value={soldier.id}>
-                            {soldier.name}
-                        </option>
-                    ))}
-                </select>
+                    onChange={handleSelectChange}
+                    getOptionLabel={(option: Soldier) => option.name}
+                    getOptionValue={(option: Soldier) => option.name}
+                    placeholder="בחר נופל..."
+                    className="w-full p-2 border rounded mb-4"
+                    isClearable
+                />
+
                 <textarea
                     className="w-full p-2 border rounded"
                     rows={3}
@@ -83,30 +93,37 @@ const Blog: React.FC<BlogProps> = ({ title, initial_stories }) => {
                     פרסם
                 </button>
             </div>
-            <div className="mb-4">
-                <input
-                    type="text"
-                    className="w-full p-2 border rounded"
-                    value={searchTerm}
-                    onChange={handleSearch}
-                    placeholder="חפש סיפורים..."
+            <h1 className="text-2xl font-bold mb-4">{title}</h1>
+            <div className="w-75 mb-4">
+                <label className="block mb-2">חפש סיפורים על...</label>
+                <Select
+                    options={soldiers}
+                    value={selectedSoldierForStories}
+                    onChange={handleSelectSoldierForStories}
+                    getOptionLabel={(option: Soldier) => option.name}
+                    getOptionValue={(option: Soldier) => option.name}
+                    placeholder="בחר נופל..."
+                    className="p-2 border rounded mb-4"
+                    isClearable
                 />
             </div>
-            <div>
-                {filteredStories.length > 0 ? (
-                    filteredStories.map((story, index) => (
-                        <StoryCard
-                            key={index}
-                            user_name={story.user_name}
-                            soldier_name={story.soldier_name}
-                            image={story.image}
-                            content={story.content}
-                            initialReplies={story.replies}
-                        />
-                    ))
-                ) : (
-                    <p>No stories found.</p>
-                )}
+            <div className="w-75 text-center border border-gray-300 p-4">
+                <div>
+                    {filteredStories.length > 0 ? (
+                        filteredStories.map((story, index) => (
+                            <StoryCard
+                                key={index}
+                                user_name={story.user_name}
+                                soldier_name={story.soldier_name}
+                                image={story.image}
+                                content={story.content}
+                                initialReplies={story.replies}
+                            />
+                        ))
+                    ) : (
+                        <p>No stories found.</p>
+                    )}
+                </div>
             </div>
         </div>
     );

@@ -12,14 +12,14 @@ export default function BootstrapCarousel() {
         setIndex(selectedIndex);
     };
     return (
-        <Carousel activeIndex={index} onSelect={handleSelect}>
+        <Carousel activeIndex={index} onSelect={handleSelect} className="h-max">
             {bootstrap.map((item) => (
                 <Carousel.Item key={item.id} interval={4000}>
                     {
                         item.type === "image" ?
                             <Image src={item.src} alt={item.alt} width={250} height={250} priority={item.priority} />
                             :
-                            <video controls width="250" height="250">
+                            <video controls width={450}>
                                 <source src={item.src} type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>

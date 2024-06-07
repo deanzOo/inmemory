@@ -15,6 +15,7 @@
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.3.1",
     "react-responsive-carousel": "^3.2.23",
+    "react-select": "^5.8.0",
     "react-slick": "^0.30.2",
     "rss-parser": "^3.13.0",
     "slick-carousel": "^1.8.1",
