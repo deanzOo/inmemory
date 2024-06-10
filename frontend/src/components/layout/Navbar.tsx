@@ -1,11 +1,11 @@
 'use client';
 
-import { i18n } from "../../i18n-config";
+import { i18n } from "../../../i18n-config";
 import {useRouter} from "next/navigation";
 import React, {useEffect, useState} from "react";
 import {FormattedMessage} from "react-intl";
-import MessagesContainer from "@/components/MessagesContainer";
-import AppLink from "@/components/AppLink";
+import MessagesContainer from "@/components/common/MessagesContainer";
+import AppLink from "@/components/common/AppLink";
 import { useAuth } from '@/context/AuthContext';
 
 export default function Navbar({ locale, token }: { locale: string, token?: string}) {

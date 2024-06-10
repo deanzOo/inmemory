@@ -4,7 +4,7 @@ import { IntlProvider } from "react-intl";
 
 async function getMessages(locale: string) {
     try {
-        return await import(`../lang/${locale}.json`);
+        return await import(`../../locales/${locale}.json`);
     } catch (error) {
         console.error(`Error loading messages for locale ${locale}:`, error);
         return null;
@@ -26,7 +26,7 @@ const MessagesContainer = ({ locale, children }: MessagesContainerProps) => {
             setMessages(messages);
             setLoading(false);
         }
-        fetchMessages();
+        fetchMessages().then(r => r);
     }, [locale]);
 
     if (loading || messages === null) {

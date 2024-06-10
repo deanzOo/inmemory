@@ -1,9 +1,8 @@
 import { getIntl } from "@/lib/intl";
-import MediaCarousel from "@/components/Carousel";
-import RSSFeed from "@/components/RSSFeed";
+import MediaCarousel from "@/components/home/Carousel";
+import RSSFeed from "@/components/home/RSSFeed";
 import React from "react";
-import { Metadata, ResolvingMetadata } from "next";
-import AlertsHistory from "@/components/AlertsHistory";
+import AlertsHistory from "@/components/home/AlertsHistory";
 
 type HomeProps = {
     params: { locale: string };

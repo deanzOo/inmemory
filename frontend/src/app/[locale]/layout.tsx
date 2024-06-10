@@ -1,9 +1,9 @@
 import {Metadata, ResolvingMetadata} from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Sidebar from "@/components/Sidebar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Sidebar from "@/components/layout/Sidebar";
+import Footer from "@/components/layout/Footer";
 import {getDirection, getIntl} from "@/lib/intl";
 import {cookies} from "next/headers";
 import { AuthProvider } from '@/context/AuthContext';

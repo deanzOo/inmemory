@@ -1,8 +1,8 @@
 "use client";
 import Link from 'next/link';
-import MessagesContainer from "@/components/MessagesContainer";
+import MessagesContainer from "@/components/common/MessagesContainer";
 import {FormattedMessage} from "react-intl";
-import AppLink from "@/components/AppLink";
+import AppLink from "@/components/common/AppLink";
 
 export default function Sidebar({ locale }: { locale: string }) {
     return (

@@ -1,9 +1,9 @@
 "use client";
 import { FormattedMessage } from "react-intl";
-import MessagesContainer from "./MessagesContainer";
+import MessagesContainer from "../common/MessagesContainer";
 import Link from 'next/link';
 import Image from "next/image";
-import AppLink from "@/components/AppLink";
+import AppLink from "@/components/common/AppLink";
 
 export default function Footer({ locale }: { locale: string }) {
     return (

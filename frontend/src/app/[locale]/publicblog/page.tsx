@@ -1,5 +1,5 @@
 import React from 'react';
-import Blog from "@/components/Blog";
+import Blog from "@/components/stories/Blog";
 import info from "../../../../public/info.json";
 import {getIntl} from "@/lib/intl";
 
