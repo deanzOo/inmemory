@@ -7,6 +7,8 @@ import React, {useState} from "react";
 import {FormattedMessage} from "react-intl";
 import MessagesContainer from "@/components/MessagesContainer";
 import LocalizedLink from "@/components/AppLink";
+import AppLink from "@/components/AppLink";
+import App from "next/app";
 
 export default function Navbar({ locale }: { locale: string }) {
     const { locales, defaultLocale } = i18n;
@@ -24,27 +26,37 @@ export default function Navbar({ locale }: { locale: string }) {
             <div id="header" className="w-full bg-gray-800 text-white p-2">
                 <div className="flex justify-between items-center">
                     <div className="flex flex-row justify-content-center flex-grow">
-                        <FormattedMessage id="layout.header.link.candle"/> |
-                        <LocalizedLink locale={locale} href='/' text="layout.header.link.homepage" /> |
-                        <LocalizedLink locale={locale} href='/about' text="layout.header.link.about" /> |
-                        <FormattedMessage id="layout.header.link.login"/> |
-                        <FormattedMessage id="layout.header.link.register"/>
+                        <AppLink locale={locale} href='/candle'>
+                            <FormattedMessage id="layout.header.link.candle"/>
+                        </AppLink>
+                        <AppLink locale={locale} href='/'>
+                            <FormattedMessage id="layout.header.link.homepage" />
+                        </AppLink>
+                        <AppLink locale={locale} href='/about'>
+                            <FormattedMessage id="layout.header.link.about"/>
+                        </AppLink>
+                        <AppLink locale={locale} href='/login'>
+                            <FormattedMessage id="layout.header.link.login"/>
+                        </AppLink>
+                        <AppLink locale={locale} href='/register'>
+                            <FormattedMessage id="layout.header.link.register"/>
+                        </AppLink>
                     </div>
                     <div
                         className="relative languages"
                         onMouseEnter={() => setIsDropdownOpen(true)}
                         onMouseLeave={() => setIsDropdownOpen(false)}
                     >
-                        <div className="px-2 cursor-pointer">
+                        <div className="px-2 cursor-pointer link">
                             <FormattedMessage tagName="p" id="layout.header.languages.label"/>
                         </div>
                         {isDropdownOpen && (
                             <div
-                                className="absolute right-0 mt-2 bg-gray-800 text-white border border-gray-700 rounded-md shadow-lg">
+                                className="absolute -right-5 mt-2 bg-gray-800 text-white border border-gray-700 rounded-md shadow-lg">
                                 {[...locales].sort().map((localeOption) => (
                                     <div
                                         key={localeOption}
-                                        className={`px-4 py-2 cursor-pointer ${localeOption === locale ? "font-bold" : ""}`}
+                                        className={`link px-4 py-2 cursor-pointer ${localeOption === locale ? "font-bold" : ""}`}
                                         onClick={() => handleChange(localeOption)}
                                     >
                                         <FormattedMessage tagName="p" id={"layout.header.languages." + localeOption}/>

@@ -19,9 +19,9 @@ export async function generateMetadata(
 ): Promise<Metadata> {
     const intl = await getIntl(props.params.locale);
     return {
-        title: intl.formatMessage({ id: "page.home.head.title" }),
+        title: intl.formatMessage({ id: "website.title" }),
         description: intl.formatMessage({
-            id: "page.home.head.meta.description",
+            id: "website.meta.description",
         }),
         alternates: {
             canonical: "https://example.com",

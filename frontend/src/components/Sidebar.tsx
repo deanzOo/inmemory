@@ -2,22 +2,26 @@
 import Link from 'next/link';
 import MessagesContainer from "@/components/MessagesContainer";
 import {FormattedMessage} from "react-intl";
+import AppLink from "@/components/AppLink";
 
 export default function Sidebar({ locale }: { locale: string }) {
     return (
-        <aside id="sidebar" className="w-1/8 bg-gray-200 p-4 shadow-md flex flex-col">
+        <div className="w-1/8 bg-gray-700 p-4 shadow-md">
             <MessagesContainer locale={locale}>
-                <Link className="py-2 link" href='/familiesblog'>
-                    <FormattedMessage tagName="p" id="layout.sidebar.link.familystories"/>
-                </Link>
-                <Link className="py-2 link" href='/publicblog' >
-                    <FormattedMessage tagName="p" id="layout.sidebar.link.publicstories"/>
-                </Link>
-                <span className="py-2">
-                    <FormattedMessage tagName="p" id="layout.sidebar.link.donations"/>
-                </span>
+                <aside id="sidebar" className="flex flex-col">
+                    <AppLink href='/familiesblog' locale={locale}>
+                        <FormattedMessage tagName="span" id="layout.sidebar.link.familystories"/>
+                    </AppLink>
+                    <AppLink href='/publicblog' locale={locale} >
+                        <FormattedMessage tagName="span" id="layout.sidebar.link.publicstories"/>
+                    </AppLink>
+                    <AppLink href='/donations' locale={locale}>
+                        <FormattedMessage tagName="span" id="layout.sidebar.link.donations"/>
+                    </AppLink>
+                </aside>
             </MessagesContainer>
-        </aside>
+        </div>
+
 )
     ;
 }

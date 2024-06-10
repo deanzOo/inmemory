@@ -23,7 +23,7 @@ export default function RSSFeed() {
     }, []);
 
     return (
-        <div id="rss_feed" className="mb-4 text-center h-48 overflow-y-auto border border-gray-300 shadow-lg p-4 rounded-lg w-50">
+        <div id="rss_feed" className="mb-4 text-center h-48 overflow-y-auto border border-gray-300 shadow-lg p-4 rounded-lg w-25">
             <span className="block mb-2 font-bold">* עדכוני חדשות בזמן אמת *</span>
             <div>
                 {rssFeed.length > 0 ? (

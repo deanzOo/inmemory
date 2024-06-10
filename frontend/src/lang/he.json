@@ -1,6 +1,6 @@
 {
   "website.title": "אתר הנצחה",
-  "website..meta.description": "לזכר חללי מערכות ההגנה לצבא ההגנה לישראל במלחמת חרבות ברזל.",
+  "website.meta.description": "לזכר חללי מערכות ההגנה לצבא ההגנה לישראל במלחמת חרבות ברזל.",
   "layout.header.languages.label": "שנה שפה",
   "layout.header.languages.he": "עברית",
   "layout.header.languages.en": "אנגלית",
@@ -17,5 +17,6 @@
   "layout.footer.link.privacy": "פרטיות",
   "layout.footer.link.map": "מפת האתר",
   "page.home.header": "ברוכים הבאים לאתר הנצחה",
-  "page.home.search.label": "חפש..."
+  "page.home.search.label": "חפש...",
+  "page.publicblog.header": "סיפורי נופלים"
 }

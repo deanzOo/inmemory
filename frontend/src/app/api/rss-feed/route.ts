@@ -1,5 +1,3 @@
-// app/api/rss-feed/route.ts
-
 import { NextResponse } from 'next/server';
 import Parser from 'rss-parser';
 

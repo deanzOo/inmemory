@@ -3,27 +3,7 @@ import MediaCarousel from "@/components/Carousel";
 import RSSFeed from "@/components/RSSFeed";
 import React from "react";
 import { Metadata, ResolvingMetadata } from "next";
-
-type RouteProps = {
-    params: { locale: string };
-    searchParams: { [key: string]: string | string[] | undefined };
-};
-
-export async function generateMetadata(
-    props: RouteProps,
-    parent: ResolvingMetadata
-): Promise<Metadata> {
-    return {
-        alternates: {
-            canonical: "https://example.com",
-            languages: {
-                en: "http://example.com/en",
-                he: "http://example.com",
-                "x-default": "http://example.com",
-            },
-        },
-    };
-}
+import AlertsHistory from "@/components/AlertsHistory";
 
 type HomeProps = {
     params: { locale: string };
@@ -32,7 +12,7 @@ type HomeProps = {
 export default async function Home({ params: { locale } }: HomeProps) {
     const intl = await getIntl(locale);
     return (
-        <div id="content" className="w-4/5 p-5 flex flex-col flex-grow justify-between items-center">
+        <div id="content" className="flex flex-column items-center justify-between min-h-max bg-gray-100 w-100">
             <h1 className="text-2xl font-bold mb-4 text-center">
                 {intl.formatMessage({ id: "page.home.header" })}
             </h1>
@@ -42,7 +22,10 @@ export default async function Home({ params: { locale } }: HomeProps) {
                 </label>
             </div>
             <MediaCarousel/>
-            <RSSFeed/>
+            <div className="flex flex-row justify-content-evenly w-100">
+                <RSSFeed/>
+                <AlertsHistory/>
+            </div>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 {
   "website.title": "Memorial",
-  "website..meta.description": "Memorial for the fallen of the IDF's in the Swords of Steel War",
+  "website.meta.description": "Memorial for the fallen of the IDF's in the Swords of Steel War",
   "layout.header.languages.label": "Change language",
   "layout.header.languages.he": "Hebrew",
   "layout.header.languages.en": "English",
@@ -17,5 +17,6 @@
   "layout.footer.link.privacy": "Privacy",
   "layout.footer.link.map": "Map",
   "page.home.header": "Welcome to the Memorial Website",
-  "page.home.search.label": "Search..."
+  "page.home.search.label": "Search...",
+  "page.publicblog.header": "Fallen Stories"
 }

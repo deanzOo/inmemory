@@ -4,27 +4,7 @@ import React, { useState } from 'react';
 import StoryCard from './StoryCard';
 import info from '../../public/info.json';
 import Select from 'react-select';
-
-interface Soldier {
-    id: number;
-    name: string;
-    rank: string;
-    image: string;
-    unit: string;
-}
-
-interface BlogProps {
-    title: string;
-    initial_stories?: Story[];
-}
-
-interface Story {
-    user_name: string;
-    soldier_name: string;
-    image: string;
-    content: string;
-    replies: { content: string; user_name: string; }[];
-}
+import {BlogProps, Soldier, Story} from "@/lib/types";
 
 const Blog: React.FC<BlogProps> = ({ title, initial_stories }) => {
     const soldiers: Soldier[] = info.soldiers;
