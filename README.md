@@ -58,18 +58,21 @@ This project aims to honor and remember the brave soldiers who sacrificed their 
 ## Folder Structure
 ```csharp
 inmemory/
-├── backend/               # Backend source code
-│   ├── controllers/       # Controllers for handling requests
-│   ├── models/            # Mongoose models
-│   ├── routes/            # API routes
-│   ├── app.js             # Express app setup
-│   └── config.js          # Configuration (e.g., MongoDB connection)
-├── frontend/              # Frontend source code
-│   ├── app/               # Next.js app directory
-│   ├── components/        # React components
-│   ├── pages/             # Next.js pages
-│   ├── public/            # Public assets
-│   └── styles/            # CSS styles
+├── src/                            # Frontend source code
+│   ├── app/                        # Next.js app directory
+│   │    ├──[locale]/               # Localization routing
+│   │    │     ├──[page]/           # Pages
+│   │    │     │    └──page.tsx     # Page component
+│   │    │     ├── layout.tsx       # Layout component
+│   │    │     └── page.tsx         # Index page    
+│   │    └──api/                    # API routes
+│   ├── components/                 # React components
+│   ├── lib/                        # Utility functions
+│   ├── locales/                    # Localization files
+│   ├── models/                     # Mongoose models
+│   ├── styles/                     # Tailwind CSS styles
+│   └── context/                    # React context
+├── public/                         # Public assets
 ├── .gitignore
 ├── README.md
 ├── package.json
