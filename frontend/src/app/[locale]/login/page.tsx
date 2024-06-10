@@ -18,6 +18,7 @@ export default function LoginPage() {
 
         if (res.ok) {
             alert('Login successful!');
+            window.location.href = '/';  // Redirect to home or dashboard
         } else {
             alert('Login failed.');
         }

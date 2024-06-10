@@ -1,25 +1,28 @@
 'use client';
 
-import Link from 'next/link';
 import { i18n } from "../../i18n-config";
 import {useRouter} from "next/navigation";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {FormattedMessage} from "react-intl";
 import MessagesContainer from "@/components/MessagesContainer";
-import LocalizedLink from "@/components/AppLink";
 import AppLink from "@/components/AppLink";
-import App from "next/app";
+import { useAuth } from '@/context/AuthContext';
 
-export default function Navbar({ locale }: { locale: string }) {
+export default function Navbar({ locale, token }: { locale: string, token?: string}) {
     const { locales, defaultLocale } = i18n;
 
     const router = useRouter();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const { user, logout } = useAuth();
 
     const handleChange = (locale: string) => {
         const path = locale === defaultLocale ? "/" : `/${locale}`;
         router.push(path);
     };
+
+    useEffect(() => {
+        // Handle any side effects based on the user state
+    }, [user]);
 
     return (
         <MessagesContainer locale={locale}>
@@ -35,12 +38,23 @@ export default function Navbar({ locale }: { locale: string }) {
                         <AppLink locale={locale} href='/about'>
                             <FormattedMessage id="layout.header.link.about"/>
                         </AppLink>
+                        {!user && (
                         <AppLink locale={locale} href='/login'>
                             <FormattedMessage id="layout.header.link.login"/>
                         </AppLink>
+                        )}
+                        {!user && (
                         <AppLink locale={locale} href='/register'>
                             <FormattedMessage id="layout.header.link.register"/>
                         </AppLink>
+                        )}
+                        {user && (
+                            <div onClick={logout} className="cursor-pointer">
+                                <AppLink locale={locale} href=''>
+                                    <FormattedMessage id="layout.header.link.logout"/>
+                                </AppLink>
+                            </div>
+                        )}
                     </div>
                     <div
                         className="relative languages"

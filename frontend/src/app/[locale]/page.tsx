@@ -12,7 +12,7 @@ type HomeProps = {
 export default async function Home({ params: { locale } }: HomeProps) {
     const intl = await getIntl(locale);
     return (
-        <div id="content" className="flex flex-column items-center justify-between min-h-max bg-gray-100 w-100">
+        <div id="content" className="flex flex-column items-center justify-evenly min-h-max bg-gray-100 w-100">
             <h1 className="text-2xl font-bold mb-4 text-center">
                 {intl.formatMessage({ id: "page.home.header" })}
             </h1>

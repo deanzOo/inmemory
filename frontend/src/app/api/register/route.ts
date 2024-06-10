@@ -1,15 +1,31 @@
+// app/api/register/route.ts
 import { NextResponse } from 'next/server';
+import connectToDatabase from '@/lib/mongodb';
+import User from '@/models/User';
+import bcrypt from 'bcryptjs';
 
 export async function POST(request: Request) {
+    await connectToDatabase();
+
     const { username, password } = await request.json();
 
-    // Here, you would handle storing the user in your database
-    // For example, you could use Prisma, Mongoose, or any other database client
+    if (!username || !password) {
+        return NextResponse.json({ error: 'Username and password are required' }, { status: 400 });
+    }
 
-    if (username && password) {
-        // Perform database operations here
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+        return NextResponse.json({ error: 'Username already exists' }, { status: 400 });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new User({ username, password: hashedPassword });
+
+    try {
+        await newUser.save();
         return NextResponse.json({ message: 'User registered successfully' });
-    } else {
-        return NextResponse.json({ error: 'Invalid data' }, { status: 400 });
+    } catch (error) {
+        return NextResponse.json({ error: 'Error registering user' }, { status: 500 });
     }
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import {router} from "next/client";
 
 export default function RegisterPage() {
     const [username, setUsername] = useState('');
@@ -18,8 +19,9 @@ export default function RegisterPage() {
 
         if (res.ok) {
             alert('Registration successful!');
+            await router.push('/login');
         } else {
-            alert('Registration failed.');
+            alert('Registration failed: ' + (await res.json()).error || 'Unknown error');
         }
     };
 

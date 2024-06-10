@@ -18,3 +18,8 @@ export interface Story {
     content: string;
     replies: { content: string; user_name: string; }[];
 }
+
+export interface User {
+    userId: string;
+    username: string;
+}

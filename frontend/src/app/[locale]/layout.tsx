@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
 import {getDirection, getIntl} from "@/lib/intl";
+import {cookies} from "next/headers";
+import { AuthProvider } from '@/context/AuthContext';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,16 +44,22 @@ type LayoutProps = {
 export default function RootLayout({ params, children }: LayoutProps) {
     const { locale } = params;
     const dir = getDirection(locale);
+
+    const cookieStore = cookies();
+    const token = cookieStore.get('token')?.value;
+
   return (
     <html lang={locale} dir={dir}>
       <body className={inter.className} dir={dir}>
       <main id="container" className="flex flex-col">
-          <Navbar locale={locale} />
-          <div id="main-content">
-              <Sidebar locale={locale} />
-              {children}
-          </div>
-          <Footer locale={locale} />
+          <AuthProvider token={token}>
+              <Navbar locale={locale} token={token} />
+              <div id="main-content">
+                  <Sidebar locale={locale} />
+                  {children}
+              </div>
+              <Footer locale={locale} />
+          </AuthProvider>
         </main>
       </body>
     </html>
