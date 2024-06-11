@@ -38,7 +38,7 @@ const StoryCard: React.FC<StoryCardProps> = ({
             <Image src={image} alt={soldier_name + ''} className="w-16 h-16 rounded-full absolute top-4 left-4" width={100} height={100} />
             <div className="ml-20">
                 <h2 className="text-xl font-bold">{"נכתב על ידי: " + user_name}</h2>
-                <h3 className="text-md font-semibold text-gray-700">{"שם הנופל: " + soldier_name}</h3>
+                <h3 className="text-md font-semibold text-gray-700">{"שם החלל: " + soldier_name}</h3>
                 <p className="mt-2">{content}</p>
                 <div className="mt-4">
                     <h4 className="text-md font-semibold">תגובות:</h4>

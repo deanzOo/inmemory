@@ -1,5 +1,4 @@
 "use client";
-import Link from 'next/link';
 import MessagesContainer from "@/components/common/MessagesContainer";
 import {FormattedMessage} from "react-intl";
 import AppLink from "@/components/common/AppLink";
@@ -9,6 +8,9 @@ export default function Sidebar({ locale }: { locale: string }) {
         <div className="w-1/8 bg-gray-700 p-4 shadow-md">
             <MessagesContainer locale={locale}>
                 <aside id="sidebar" className="flex flex-col">
+                    <AppLink href='/soldiers' locale={locale}>
+                        <FormattedMessage tagName="span" id="layout.sidebar.link.soldiers"/>
+                    </AppLink>
                     <AppLink href='/familiesblog' locale={locale}>
                         <FormattedMessage tagName="span" id="layout.sidebar.link.familystories"/>
                     </AppLink>
@@ -17,6 +19,10 @@ export default function Sidebar({ locale }: { locale: string }) {
                     </AppLink>
                     <AppLink href='/donations' locale={locale}>
                         <FormattedMessage tagName="span" id="layout.sidebar.link.donations"/>
+                    </AppLink>
+                    <span>חפש</span>
+                    <AppLink href='/addSoldier' locale={locale}>
+                        <FormattedMessage tagName="span" id="layout.sidebar.link.addsoldier"/>
                     </AppLink>
                 </aside>
             </MessagesContainer>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Blog from "@/components/stories/Blog";
-import info from "../../../../public/info.json";
+import info from "../../../public/info.json";
 
 const FamiliesBlog = () => {
     let initial_stories = info.stories.filter(story => story.family)

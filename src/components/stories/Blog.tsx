@@ -2,9 +2,10 @@
 
 import React, { useState } from 'react';
 import StoryCard from './StoryCard';
-import info from '../../../public/info.json';
+import info from '../../public/info.json';
 import Select from 'react-select';
 import {BlogProps, Soldier, Story} from "@/lib/types";
+import {useAuth} from "@/context/AuthContext";
 
 const Blog: React.FC<BlogProps> = ({ title, initial_stories }) => {
     const soldiers: Soldier[] = info.soldiers;
@@ -14,6 +15,7 @@ const Blog: React.FC<BlogProps> = ({ title, initial_stories }) => {
     const [selectedSoldier, setSelectedSoldier] = useState(soldiers[0]);
     const [selectedSoldierForStories, setSelectedSoldierForStories] = useState(soldiers[0]);
     const [publisher, setPublisher] = useState('סטטי זמני');
+    const { user, logout } = useAuth();
 
     const handlePublish = () => {
         if (newStory.trim() !== '') {
@@ -50,14 +52,14 @@ const Blog: React.FC<BlogProps> = ({ title, initial_stories }) => {
     return (
         <div id="content" className="px-4 align-items-center">
             <div className="w-75 mb-4">
-                <label className="block mb-2">נופל:</label>
+                <label className="block mb-2">חייל:</label>
                 <Select
                     options={soldiers}
                     value={selectedSoldier}
                     onChange={handleSelectChange}
                     getOptionLabel={(option: Soldier) => option.name}
                     getOptionValue={(option: Soldier) => option.name}
-                    placeholder="בחר נופל..."
+                    placeholder="בחר חייל..."
                     className="w-full p-2 border rounded mb-4"
                     isClearable
                 />
@@ -82,7 +84,7 @@ const Blog: React.FC<BlogProps> = ({ title, initial_stories }) => {
                     onChange={handleSelectSoldierForStories}
                     getOptionLabel={(option: Soldier) => option.name}
                     getOptionValue={(option: Soldier) => option.name}
-                    placeholder="בחר נופל..."
+                    placeholder="בחר חלל..."
                     className="p-2 border rounded mb-4"
                     isClearable
                 />

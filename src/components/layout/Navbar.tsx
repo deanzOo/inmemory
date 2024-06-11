@@ -20,10 +20,6 @@ export default function Navbar({ locale, token }: { locale: string, token?: stri
         router.push(path);
     };
 
-    useEffect(() => {
-        // Handle any side effects based on the user state
-    }, [user]);
-
     return (
         <MessagesContainer locale={locale}>
             <div id="header" className="w-full bg-gray-800 text-white p-2">
