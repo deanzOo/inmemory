@@ -23,7 +23,6 @@ export const AuthProvider = ({ children, token }: { children: ReactNode, token?:
     }, []);
 
     const logout = () => {
-        document.cookie = 'token=; Max-Age=0; path=/';
         setUser(null);
         router.push('/');
     };

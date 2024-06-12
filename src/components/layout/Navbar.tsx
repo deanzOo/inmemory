@@ -20,6 +20,14 @@ export default function Navbar({ locale, token }: { locale: string, token?: stri
         router.push(path);
     };
 
+    const handleLogout = () => {
+        fetch('/api/logout', {
+            method: 'GET'
+        }).then(() => {
+            logout();
+        });
+    };
+
     return (
         <MessagesContainer locale={locale}>
             <div id="header" className="w-full bg-gray-800 text-white p-2">
@@ -45,7 +53,7 @@ export default function Navbar({ locale, token }: { locale: string, token?: stri
                         </AppLink>
                         )}
                         {user && (
-                            <div onClick={logout} className="cursor-pointer">
+                            <div onClick={handleLogout} className="cursor-pointer">
                                 <AppLink locale={locale} href=''>
                                     <FormattedMessage id="layout.header.link.logout"/>
                                 </AppLink>
