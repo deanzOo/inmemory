@@ -1,13 +1,13 @@
 import { NextResponse } from 'next/server';
 import connectToDatabase from "@/lib/mongodb";
-import Soldier from "@/models/Soldier";
+import Story from "@/models/Story";
 
 export async function GET(req: Request) {
     await connectToDatabase();
     try {
-        const soldiers = await Soldier.find({});
+        const stories = await Story.find({});
 
-        return NextResponse.json({ soldiers }, { status: 200 });
+        return NextResponse.json({ stories }, { status: 200 });
     } catch (error) {
         return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
     }

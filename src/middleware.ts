@@ -35,7 +35,6 @@ export function middleware(request: NextRequest) {
             '/icons/map.png',
             '/icons/privacy.png',
             '/icons/wheelchair.png',
-            '/info.json'
             // Your other files in `public`
         ].includes(pathname)
     )

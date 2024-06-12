@@ -8,14 +8,17 @@ export interface Soldier {
 
 export interface BlogProps {
     title: string;
-    initial_stories?: Story[];
+    family: boolean;
 }
 
 export interface Story {
     user_name: string;
-    soldier_name: string;
-    image: string;
+    soldier: {
+        name: string,
+        image: string
+    };
     content: string;
+    family: boolean;
     replies: { content: string; user_name: string; }[];
 }
 
