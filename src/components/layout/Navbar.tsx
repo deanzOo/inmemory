@@ -55,7 +55,7 @@ export default function Navbar({ locale, token }: { locale: string, token?: stri
                         {user && (
                             <div onClick={handleLogout} className="cursor-pointer">
                                 <AppLink locale={locale} href=''>
-                                    <FormattedMessage id="layout.header.link.logout"/>
+                                    <FormattedMessage id="layout.header.link.logout.hello"/> {user.username}, <FormattedMessage id="layout.header.link.logout"/>
                                 </AppLink>
                             </div>
                         )}

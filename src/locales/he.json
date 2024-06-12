@@ -10,6 +10,7 @@
   "layout.header.link.homepage": "דף הבית",
   "layout.header.link.about": "אודות",
   "layout.header.link.logout": "התנתק",
+  "layout.header.link.logout.hello": "שלום",
   "layout.sidebar.link.soldiers": "גלריה",
   "layout.sidebar.link.familystories": "סיפורי משפחות",
   "layout.sidebar.link.publicstories": "סיפורי חללים",

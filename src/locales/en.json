@@ -10,6 +10,7 @@
   "layout.header.link.homepage": "Homepage",
   "layout.header.link.about": "About",
   "layout.header.link.logout": "Logout",
+  "layout.header.link.logout.hello": "Hello",
   "layout.sidebar.link.soldiers": "Gallery",
   "layout.sidebar.link.familystories": "Family Stories",
   "layout.sidebar.link.publicstories": "Fallen Stories",
