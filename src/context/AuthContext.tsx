@@ -3,7 +3,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { verifyToken, UserPayload } from '@/lib/auth';
-import {cookies} from "next/headers";
 
 interface AuthContextProps {
     user: UserPayload | null;
