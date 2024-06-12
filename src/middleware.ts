@@ -28,6 +28,19 @@ export function middleware(request: NextRequest) {
 
     const pathname = request.nextUrl.pathname;
 
+    if (
+        [
+            '/favicon.ico',
+            '/icons/mail.png',
+            '/icons/map.png',
+            '/icons/privacy.png',
+            '/icons/wheelchair.png',
+            '/info.json'
+            // Your other files in `public`
+        ].includes(pathname)
+    )
+        return
+
     const pathLocale = locales.find(
         (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     );

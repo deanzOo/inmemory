@@ -22,6 +22,13 @@ export default function Gallery() {
         fetchRecords();
     }, []);
 
+    function formatDate(date: string) {
+        const deathDate = new Date(date);
+        const formattedDate = new Intl.DateTimeFormat('en-GB').format(deathDate);
+        const [day, month, year] = formattedDate.split('/');
+        return `${day}.${month}.${year}`;
+    }
+
     return (
         <div className="container mx-auto mt-10">
             <h1 className="text-3xl font-bold text-center mb-6">Gallery</h1>
@@ -32,7 +39,7 @@ export default function Gallery() {
                             <h2 className="text-xl font-bold">{record.name}</h2>
                             <p className="text-gray-700">{record.rank}</p>
                             <p className="text-gray-700">{record.unit}</p>
-                            <p className="text-gray-700">{record.dateOfDeath}</p>
+                            <p className="text-gray-700">{formatDate(record.dateOfDeath)}</p>
                         </div>
                         <div className="md:w-1/2">
                             <img src={record.image} alt={record.name} className="w-full h-full object-cover" />

@@ -5,7 +5,13 @@ const nextConfig = {
         JWT_SECRET: process.env.JWT_SECRET
     },
     images: {
-        domains: ['static.wixstatic.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'static.wixstatic.com',
+                port: '',
+            }
+        ]
     },
 };
 
