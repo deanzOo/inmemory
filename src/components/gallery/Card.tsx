@@ -3,15 +3,11 @@
 import {Soldier} from "@/lib/types";
 import AppLink from "@/components/common/AppLink";
 import {i18n} from "../../../i18n-config";
+import {formatDate} from "@/lib/helpers";
 
 export default function Card({locale, soldier, key}: {locale: string, soldier: Soldier, key: number}) {
 
-    function formatDate(date: string) {
-        const deathDate = new Date(date);
-        const formattedDate = new Intl.DateTimeFormat('en-GB').format(deathDate);
-        const [day, month, year] = formattedDate.split('/');
-        return `${day}.${month}.${year}`;
-    }
+
     const { defaultLocale } = i18n;
 
     const href = locale === defaultLocale ? `/${locale}/soldier/${soldier._id}` : `/soldier/${soldier._id}`;

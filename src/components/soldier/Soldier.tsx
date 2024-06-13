@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './Soldier.css';
 import {Soldier, Story} from "@/lib/types";
 import Cookies from 'js-cookie';
+import {formatDate} from "@/lib/helpers";
 
 interface SoldierComponentProps {
     id: string;
@@ -38,11 +39,11 @@ const SoldierComponent = ({ id }: SoldierComponentProps) => {
         <div className="soldier-container">
             <h1>{soldier.name}</h1>
             <img src={soldier.image} alt={`${soldier.name}`} />
-            <p>Rank: {soldier.rank}</p>
-            <p>Unit: {soldier.unit}</p>
-            <p>Date of Death: {soldier.dateOfDeath}</p>
-            <div className="candle" onClick={handleCandleClick}>
-                {candleLit ? '🕯️' : '🕯️ (unlit)'}
+            <p>{soldier.rank}</p>
+            <p>{soldier.unit}</p>
+            <p>{formatDate(soldier.dateOfDeath)}</p>
+            <div className="candle bg-black w-10 h-10" onClick={handleCandleClick}>
+                {candleLit ? '🕯️' : '🕯️'}
             </div>
             <div className="stories">
                 <h2>Stories</h2>
