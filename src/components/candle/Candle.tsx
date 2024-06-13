@@ -1,20 +1,81 @@
 'use client';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import './Candle.css'; // Import the CSS file
 
-export default function Candle() {
+const getCookie = (name: string) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(';').shift();
+};
+
+const setCookie = (name: string, value: string, days: number) => {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+};
+
+export default function Candle({ size = 'medium' }) {
     const [isLit, setIsLit] = useState(false);
+    const [counter, setCounter] = useState(0);
+
+    useEffect(() => {
+        const litTime = getCookie('candleLitTime');
+        if (litTime) {
+            const litDate = new Date(litTime);
+            const now = new Date();
+            const diff = 24 * 60 * 60 * 1000 - (now.getTime() - litDate.getTime());
+            if (diff > 0) {
+                setIsLit(true);
+                setCounter(diff);
+            } else {
+                setCookie('candleLitTime', '', -1);
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        let timer: NodeJS.Timeout;
+        if (isLit) {
+            timer = setInterval(() => {
+                setCounter(prev => {
+                    if (prev <= 1000) {
+                        setIsLit(false);
+                        setCookie('candleLitTime', '', -1);
+                        clearInterval(timer);
+                        return 0;
+                    }
+                    return prev - 1000;
+                });
+            }, 1000);
+        }
+        return () => clearInterval(timer);
+    }, [isLit]);
 
     const toggleCandle = () => {
-        setIsLit(!isLit);
+        if (!isLit) {
+            setIsLit(true);
+            const now = new Date();
+            setCookie('candleLitTime', now.toUTCString(), 1);
+            setCounter(24 * 60 * 60 * 1000);
+        }
     };
 
+    const formatTime = (milliseconds: number) => {
+        const totalSeconds = Math.floor(milliseconds / 1000);
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    };
+
+    const candleClass = `candle ${size}`;
+
     return (
-        <div className="appcontainer" onClick={toggleCandle}>
-            <div className="title flex flex-column justify-content-center">
-                <p>יזכור</p>
+        <div className="candlecontainer">
+            <div className="counter">
+                <p>לחץ על הנר להדליק לזכרם של הנופלים ל-24 שעות</p>
+                {isLit && <p>{formatTime(counter)}</p>}
             </div>
-            <div className="candle">
+            <div className={candleClass} onClick={toggleCandle}>
                 <div className="flame">
                     {isLit && (
                         <>

@@ -1,50 +1,32 @@
 'use client';
 import { useState, useEffect } from 'react';
+import Card from "@/components/gallery/Card";
+import {Soldier} from "@/lib/types";
 
-interface Record {
-    name: string;
-    rank: string;
-    unit: string;
-    dateOfDeath: string;
-    image: string;
+type GalleryParams = {
+    params: {
+        locale: string;
+    };
 }
 
-export default function Gallery() {
-    const [records, setRecords] = useState<Record[]>([]);
+export default function Gallery({params: {locale}}: GalleryParams) {
+    const [soldiers, setSoldiers] = useState<Soldier[]>([]);
 
     useEffect(() => {
-        // Fetch records from your API
-        async function fetchRecords() {
+        async function fetchSoldiers() {
             const response = await fetch('/api/soldiers');
             const data = await response.json();
-            setRecords(data.records);
+            setSoldiers(data.soldiers);
         }
-        fetchRecords();
+        fetchSoldiers();
     }, []);
-
-    function formatDate(date: string) {
-        const deathDate = new Date(date);
-        const formattedDate = new Intl.DateTimeFormat('en-GB').format(deathDate);
-        const [day, month, year] = formattedDate.split('/');
-        return `${day}.${month}.${year}`;
-    }
 
     return (
         <div className="container mx-auto mt-10">
             <h1 className="text-3xl font-bold text-center mb-6">Gallery</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {records.map((record, index) => (
-                    <div key={index} className="bg-white shadow-md rounded-md overflow-hidden flex flex-col md:flex-row">
-                        <div className="md:w-1/2 p-4">
-                            <h2 className="text-xl font-bold">{record.name}</h2>
-                            <p className="text-gray-700">{record.rank}</p>
-                            <p className="text-gray-700">{record.unit}</p>
-                            <p className="text-gray-700">{formatDate(record.dateOfDeath)}</p>
-                        </div>
-                        <div className="md:w-1/2">
-                            <img src={record.image} alt={record.name} className="w-full h-full object-cover" />
-                        </div>
-                    </div>
+                {soldiers.map((soldier, index) => (
+                    <Card locale={locale} key={index} soldier={soldier} />
                 ))}
             </div>
         </div>

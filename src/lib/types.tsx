@@ -1,9 +1,10 @@
 export interface Soldier {
-    id: number;
+    _id: string;
     name: string;
     rank: string;
     image: string;
     unit: string;
+    dateOfDeath: string;
 }
 
 export interface BlogProps {

@@ -1,4 +1,4 @@
-.appcontainer {
+.candlecontainer {
     background: #111;
     display: flex;
     margin: 0;
@@ -7,19 +7,20 @@
     overflow: hidden;
 }
 
-.title {
-    position: absolute;
-    right: 50%;
-    color: white;
-}
-
-.candle{
+.candle.medium{
     width: 34px;
     margin: 30px auto 0 auto;
     position: relative;
     height: 50%;
     align-self: flex-end;
     animation: blink .1s infinite;
+}
+
+.candle.small{
+    width: 17px;
+    height: 25%;
+    margin: 0;
+    cursor: pointer;
 }
 .wick-lit {
     position: absolute;
@@ -83,13 +84,6 @@
         bottom:0;
         width: 0;
         height: 0;
-        box-shadow:
-                0 5px 2px 3px gold,
-                0 20px 2px 14px gold,
-                0 -6px 4px 5px rgba(98, 33, 27, 0.8),
-                0 0 1px 4px rgba(255, 106, 0, 0.7),
-                0 0 3px 4px #ff6a00,
-                0 5px 3px 4px gold;
     }
 }
 .flame{
@@ -202,4 +196,14 @@
 }
 @keyframes blink{
     50% {opacity: 0.95;}
+}
+
+.counter {
+    position: absolute;
+    bottom: 70%;
+    left: 43%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 14px;
+    text-align: center;
 }

@@ -45,13 +45,15 @@ export function middleware(request: NextRequest) {
     );
 
     if (pathLocale) {
-        const isDefaultLocale = pathLocale === defaultLocale;
-        if (isDefaultLocale) {
-            let pathWithoutLocale = pathname.slice(`/${pathLocale}`.length) || "/";
-            if (request.nextUrl.search) pathWithoutLocale += request.nextUrl.search;
-
-            response = NextResponse.redirect(new URL(pathWithoutLocale, request.url));
-        }
+        // const isDefaultLocale = pathLocale === defaultLocale;
+        // if (isDefaultLocale) {
+        //     let pathWithoutLocale = pathname.slice(`/${pathLocale}`.length) || "/";
+        //     if (/^\/soldier\/[^\/]+$/.test(pathWithoutLocale))
+        //         return NextResponse.next();
+        //     if (request.nextUrl.search) pathWithoutLocale += request.nextUrl.search;
+        //
+        //     response = NextResponse.redirect(new URL(pathWithoutLocale, request.url));
+        // }
 
         nextLocale = pathLocale;
     } else {
