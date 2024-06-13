@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
 import connectToDatabase from "@/lib/mongodb";
 import Soldier from "@/models/Soldier";
+import {NextApiRequest} from "next";
 
-export async function GET(req: Request) {
+export async function GET(req: NextApiRequest) {
     await connectToDatabase();
     try {
         const soldiers = await Soldier.find({});

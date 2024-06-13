@@ -1,0 +1,11 @@
+.soldier-container {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: auto;
+}
+.candle {
+    cursor: pointer;
+    font-size: 2rem;
+}

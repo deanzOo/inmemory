@@ -13,6 +13,7 @@
     "bootstrap": "^5.3.3",
     "cookie": "^0.6.0",
     "jose": "^5.4.0",
+    "js-cookie": "^3.0.5",
     "mongoose": "^8.4.1",
     "negotiator": "^0.6.3",
     "next": "14.2.3",
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
+    "@types/js-cookie": "^3.0.6",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20",
     "@types/react": "^18",

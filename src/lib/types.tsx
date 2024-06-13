@@ -13,6 +13,7 @@ export interface BlogProps {
 }
 
 export interface Story {
+    _id: string;
     user_name: string;
     soldier: {
         name: string,
