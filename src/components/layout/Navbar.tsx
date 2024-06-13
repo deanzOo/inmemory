@@ -7,17 +7,23 @@ import {FormattedMessage} from "react-intl";
 import MessagesContainer from "@/components/common/MessagesContainer";
 import AppLink from "@/components/common/AppLink";
 import { useAuth } from '@/context/AuthContext';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar({ locale, token }: { locale: string, token?: string}) {
     const { locales, defaultLocale } = i18n;
+    const pathname = usePathname();
 
     const router = useRouter();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const { user, logout } = useAuth();
 
     const handleChange = (locale: string) => {
-        const path = locale === defaultLocale ? "/" : `/${locale}`;
-        router.push(path);
+        // strip current path of all locales
+        const pathWithoutLocale = pathname.replace(new RegExp(`^/(${[...locales].join('|')})`), '');
+        // join new locale
+        const path = locale === defaultLocale ? '' : `/${locale}`;
+
+        router.push(path + pathWithoutLocale);
     };
 
     const handleLogout = () => {
