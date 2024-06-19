@@ -10,6 +10,11 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'static.wixstatic.com',
                 port: '',
+            },
+            {
+                protocol: 'https',
+                'hostname': 'www.idf.il',
+                port: ''
             }
         ]
     },

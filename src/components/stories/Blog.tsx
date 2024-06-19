@@ -5,7 +5,6 @@ import StoryCard from './StoryCard';
 import Select from 'react-select';
 import {BlogProps, Soldier, Story} from "@/lib/types";
 import {useAuth} from "@/context/AuthContext";
-import {router} from "next/client";
 
 const Blog: React.FC<BlogProps> = ({ title, family }) => {
     const [soldiers, setSoldiers] = useState<Soldier[]>([]);
@@ -38,8 +37,9 @@ const Blog: React.FC<BlogProps> = ({ title, family }) => {
                 user_name: user.username,
                 soldier: {
                     name: selectedSoldier.name,
-                    image: selectedSoldier.image
+                    image: selectedSoldier.image,
                 },
+                solder_id: selectedSoldier._id,
                 content: newStory,
                 family: family,
                 replies: []

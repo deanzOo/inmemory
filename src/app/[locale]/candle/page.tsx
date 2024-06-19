@@ -1,7 +1,9 @@
 import Candle from '@/components/candle/Candle';
+import {getIntl} from "@/lib/intl";
 
-export default function CandlePage() {
+export default async function CandlePage({params: {locale}}: {params: { locale: string }}) {
+    const intl = await getIntl(locale);
     return (
-        <Candle />
+        <Candle headline={intl.formatMessage({ id: "page.candle.headline" })} />
     );
 }

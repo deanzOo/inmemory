@@ -22,5 +22,7 @@
   "layout.footer.link.map": "Map",
   "page.home.header": "Welcome to the Memorial Website",
   "page.home.search.label": "Search...",
-  "page.publicblog.header": "Fallen Stories"
+  "page.publicblog.header": "Fallen Stories",
+  "page.soldier.stories.titles": "Stories",
+  "page.candle.headline": "Click on the candle to light it for 24 hours"
 }

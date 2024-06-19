@@ -13,12 +13,12 @@ const setCookie = (name: string, value: string, days: number) => {
     document.cookie = `${name}=${value}; expires=${expires}; path=/`;
 };
 
-export default function Candle({ size = 'medium' }) {
+export default function Candle({ id, headline }: { id?: string, headline: string }) {
     const [isLit, setIsLit] = useState(false);
     const [counter, setCounter] = useState(0);
 
     useEffect(() => {
-        const litTime = getCookie('candleLitTime');
+        const litTime = getCookie(`candle_${id}`);
         if (litTime) {
             const litDate = new Date(litTime);
             const now = new Date();
@@ -27,7 +27,7 @@ export default function Candle({ size = 'medium' }) {
                 setIsLit(true);
                 setCounter(diff);
             } else {
-                setCookie('candleLitTime', '', -1);
+                setCookie(`candle_${id}`, '', -1);
             }
         }
     }, []);
@@ -39,7 +39,7 @@ export default function Candle({ size = 'medium' }) {
                 setCounter(prev => {
                     if (prev <= 1000) {
                         setIsLit(false);
-                        setCookie('candleLitTime', '', -1);
+                        setCookie(`candle_${id}`, '', -1);
                         clearInterval(timer);
                         return 0;
                     }
@@ -54,7 +54,7 @@ export default function Candle({ size = 'medium' }) {
         if (!isLit) {
             setIsLit(true);
             const now = new Date();
-            setCookie('candleLitTime', now.toUTCString(), 1);
+            setCookie(`candle_${id}`, now.toUTCString(), 1);
             setCounter(24 * 60 * 60 * 1000);
         }
     };
@@ -67,15 +67,13 @@ export default function Candle({ size = 'medium' }) {
         return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     };
 
-    const candleClass = `candle ${size}`;
-
     return (
         <div className="candlecontainer">
             <div className="counter">
-                <p>לחץ על הנר להדליק לזכרם של הנופלים ל-24 שעות</p>
+                <p>{headline}</p>
                 {isLit && <p>{formatTime(counter)}</p>}
             </div>
-            <div className={candleClass} onClick={toggleCandle}>
+            <div className='candle' onClick={toggleCandle}>
                 <div className="flame">
                     {isLit && (
                         <>

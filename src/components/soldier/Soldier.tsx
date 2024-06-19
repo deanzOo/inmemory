@@ -1,16 +1,22 @@
+'use client';
 import { useEffect, useState } from 'react';
 import './Soldier.css';
 import {Soldier, Story} from "@/lib/types";
 import Cookies from 'js-cookie';
 import {formatDate} from "@/lib/helpers";
+import Image from "next/image";
+import Candle from "@/components/candle/Candle";
+import StoryCard from "@/components/stories/StoryCard";
 
 interface SoldierComponentProps {
     id: string;
+    stories_title: string;
+    candle_title: string;
 }
 
 type SoldierWithStories = Soldier & { stories: Story[] };
 
-const SoldierComponent = ({ id }: SoldierComponentProps) => {
+const SoldierComponent = ({ id, stories_title, candle_title }: SoldierComponentProps) => {
     const [soldier, setSoldier] = useState<SoldierWithStories | null>(null);
     const [candleLit, setCandleLit] = useState<boolean>(false);
 
@@ -36,19 +42,28 @@ const SoldierComponent = ({ id }: SoldierComponentProps) => {
     if (!soldier) return <div>Loading...</div>;
 
     return (
-        <div className="soldier-container">
-            <h1>{soldier.name}</h1>
-            <img src={soldier.image} alt={`${soldier.name}`} />
-            <p>{soldier.rank}</p>
-            <p>{soldier.unit}</p>
-            <p>{formatDate(soldier.dateOfDeath)}</p>
-            <div className="candle bg-black w-10 h-10" onClick={handleCandleClick}>
-                {candleLit ? '🕯️' : '🕯️'}
+        <div className="flex flex-row justify-content-between p-5 w-100 h-100">
+            <div>
+                <h1 className="text-2xl title">{soldier.rank + ' ' + soldier.name}</h1>
+                <Image src={soldier.image} alt={`${soldier.name}`} width={250} height={250}
+                       className="border-2 rounded-5 my-10"/>
+                <p className="mt-2">{soldier.unit}</p>
+                <p className="mt-2">
+                    {formatDate(soldier.dateOfDeath)}
+                </p>
             </div>
-            <div className="stories">
-                <h2>Stories</h2>
+            <div className="relative w-50 mx-10">
+                <div className="absolute bottom-10 right-0 w-100 h-75 mb-10">
+                    <span>{candle_title}</span>
+                    <Candle id={soldier._id} headline="" />
+                </div>
+            </div>
+            <div className="overflow-auto">
+                <h2 className="text-xl title text-center">{stories_title}</h2>
                 {soldier.stories.map(story => (
-                    <p key={story._id}>{story.content}</p>
+                    <div key={story._id} className="mt-4">
+                        <StoryCard user_name={story.user_name} soldier_name={story.soldier.name} image={story.soldier.image} content={story.content} initialReplies={story.replies} />
+                    </div>
                 ))}
             </div>
         </div>

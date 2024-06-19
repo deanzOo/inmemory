@@ -29,5 +29,7 @@
   "page.addSoldier.unit": "יחידה",
   "page.addSoldier.deathdate": "תאריך פטירה",
   "page.addSoldier.image": "כתובת תמונה",
-  "page.addSoldier.button.add": "הוסף"
+  "page.addSoldier.button.add": "הוסף",
+  "page.soldier.stories.titles": "סיפורים",
+  "page.candle.headline": "לחץ על הנר להדליק ל-24 שעות"
 }

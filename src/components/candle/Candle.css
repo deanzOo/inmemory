@@ -7,7 +7,7 @@
     overflow: hidden;
 }
 
-.candle.medium{
+.candle{
     width: 34px;
     margin: 30px auto 0 auto;
     position: relative;
@@ -16,12 +16,6 @@
     animation: blink .1s infinite;
 }
 
-.candle.small{
-    width: 17px;
-    height: 25%;
-    margin: 0;
-    cursor: pointer;
-}
 .wick-lit {
     position: absolute;
     width: 6px;
