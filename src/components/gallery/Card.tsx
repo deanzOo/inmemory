@@ -2,7 +2,7 @@
 
 import {Soldier} from "@/lib/types";
 import AppLink from "@/components/common/AppLink";
-import {i18n} from "../../../i18n-config";
+import {i18n} from "../../i18n-config";
 import {formatDate} from "@/lib/helpers";
 
 export default function Card({locale, soldier, key}: {locale: string, soldier: Soldier, key: number}) {

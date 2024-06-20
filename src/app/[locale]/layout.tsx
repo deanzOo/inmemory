@@ -53,10 +53,10 @@ export default function RootLayout({ params, children }: LayoutProps) {
   return (
     <html lang={locale} dir={dir}>
       <body className={inter.className} dir={dir}>
-      <main id="container" className="flex flex-col">
+      <main className="appContainer">
           <AuthProvider token={token}>
               <Navbar locale={locale} token={token} />
-              <div id="main-content">
+              <div className="main-content">
                   <Sidebar locale={locale} />
                   {children}
               </div>

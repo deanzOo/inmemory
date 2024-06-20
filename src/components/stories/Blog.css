@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.blogContent {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important;
+    width: 100% !important;
+}
+
+/* Custom scrollbar styling */
+.blogContent::-webkit-scrollbar {
+    width: 12px;
+}
+
+.blogContent::-webkit-scrollbar-thumb {
+    background-color: #888; /* Change this color to your preference */
+    border-radius: 10px;
+    border: 3px solid #f1f1f1; /* Adds space around the scrollbar thumb */
+}
+
+.blogContent::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Change this color to your preference */
+}

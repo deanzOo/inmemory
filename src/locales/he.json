@@ -31,5 +31,11 @@
   "page.addSoldier.image": "כתובת תמונה",
   "page.addSoldier.button.add": "הוסף",
   "page.soldier.stories.titles": "סיפורים",
-  "page.candle.headline": "לחץ על הנר להדליק ל-24 שעות"
+  "page.candle.headline": "לחץ על הנר להדליק ל-24 שעות",
+  "page.login.login.label": "התחבר",
+  "page.login.username.label": "שם משתמש",
+  "page.login.password.label": "סיסמה",
+  "page.register.register.label": "הרשם",
+  "page.register.username.label": "שם משתמש",
+  "page.register.password.label": "סיסמה"
 }

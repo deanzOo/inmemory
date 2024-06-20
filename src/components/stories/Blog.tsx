@@ -5,6 +5,7 @@ import StoryCard from './StoryCard';
 import Select from 'react-select';
 import {BlogProps, Soldier, Story} from "@/lib/types";
 import {useAuth} from "@/context/AuthContext";
+import './Blog.css';
 
 const Blog: React.FC<BlogProps> = ({ title, family }) => {
     const [soldiers, setSoldiers] = useState<Soldier[]>([]);
@@ -80,7 +81,7 @@ const Blog: React.FC<BlogProps> = ({ title, family }) => {
     );
 
     return (
-        <div id="content" className="px-4 align-items-center">
+        <div className="blogContent">
             {user && (
                 <div className="w-75 mb-4">
                     <label className="block mb-2">חייל:</label>
@@ -110,8 +111,8 @@ const Blog: React.FC<BlogProps> = ({ title, family }) => {
             {!user && (
                 <p>התחבר כדי לפרסם סיפורים חדשים.</p>
             )}
-            <h1 className="text-2xl font-bold mb-4">{title}</h1>
-            <div className="w-75 mb-4">
+            <h1 className="mt-5 text-2xl font-bold mb-4">{title}</h1>
+            <div className="w-100 mb-4">
                 <label className="block mb-2">חפש סיפורים על...</label>
                 <Select
                     options={soldiers}

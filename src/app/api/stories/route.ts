@@ -5,9 +5,8 @@ import {NextApiRequest} from "next";
 
 export async function GET(req: NextApiRequest) {
     await connectToDatabase();
-    const {solder_id} = req.query;
     try {
-        const stories = await Story.find(solder_id ? {solder_id} : {});
+        const stories = await Story.find();
 
         return NextResponse.json({ stories }, { status: 200 });
     } catch (error) {

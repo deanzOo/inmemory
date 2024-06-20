@@ -24,5 +24,11 @@
   "page.home.search.label": "Search...",
   "page.publicblog.header": "Fallen Stories",
   "page.soldier.stories.titles": "Stories",
-  "page.candle.headline": "Click on the candle to light it for 24 hours"
+  "page.candle.headline": "Click on the candle to light it for 24 hours",
+  "page.login.login.label": "Login",
+  "page.login.username.label": "Username",
+  "page.login.password.label": "Password",
+  "page.register.register.label": "Register",
+  "page.register.username.label": "Username",
+  "page.register.password.label": "Password"
 }
