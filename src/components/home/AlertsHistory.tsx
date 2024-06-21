@@ -7,7 +7,11 @@ export default function AlertsHistory() {
     useEffect(() => {
         async function fetchAlertsFeedData() {
             try {
-                const response = await fetch('/api/alerts');
+                const response = await fetch('/api/alerts', {
+                    headers: {
+                        'Authorization': process.env.API_SECRET || ''
+                    }
+                });
                 if (response.ok) {
                     const data = await response.json();
                     setAlertsFeed(data);

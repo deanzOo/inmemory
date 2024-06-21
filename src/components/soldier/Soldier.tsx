@@ -22,10 +22,20 @@ const SoldierComponent = ({ id, stories_title, candle_title }: SoldierComponentP
 
     useEffect(() => {
         const loadSoldier = async () => {
-            const soldiersData = await (await fetch('/api/soldiers/' + id)).json();
+            const soldiersData = await (await fetch('/api/soldiers/' + id,
+                {
+                    headers: {
+                        'Authorization': process.env.API_SECRET || ''
+                    }
+                })).json();
             let soldier = soldiersData.soldier;
             if (!soldier) return; // soldier not found
-            const storiesData = await (await fetch('/api/stories/' + id)).json();
+            const storiesData = await (await fetch('/api/stories/' + id,
+                {
+                    headers: {
+                        'Authorization': process.env.API_SECRET || ''
+                    }
+                })).json();
             soldier.stories = storiesData.stories;
             setSoldier(soldier);
             setCandleLit(Cookies.get(`candle_${id}`) === 'lit');

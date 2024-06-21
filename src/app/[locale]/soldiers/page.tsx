@@ -14,7 +14,11 @@ export default function Gallery({params: {locale}}: GalleryParams) {
 
     useEffect(() => {
         async function fetchSoldiers() {
-            const response = await fetch('/api/soldiers');
+            const response = await fetch('/api/soldiers', {
+                headers: {
+                    'Authorization': process.env.API_SECRET || ''
+                }
+            });
             const data = await response.json();
             setSoldiers(data.soldiers);
         }

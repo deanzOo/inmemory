@@ -21,42 +21,35 @@ function getLocale(request: NextRequest, i18nConfig: I18nConfig): string {
 }
 
 export function middleware(request: NextRequest) {
-    let response;
-    let nextLocale;
-
     const { locales, defaultLocale } = i18n;
-
     const pathname = request.nextUrl.pathname;
 
     if (
         [
             '/favicon.ico',
             '/icons/mail.png',
-            '/icons/map.png',
-            '/icons/privacy.png',
-            '/icons/wheelchair.png',
-            // Your other files in `public`
         ].includes(pathname)
     )
-        return
+        return NextResponse.next();
+
+    if (pathname.startsWith('/api')) {
+        const token = request.headers.get('authorization');
+        if (token !== process.env.API_SECRET) {
+            return new NextResponse(JSON.stringify({ message: 'Unauthorized' }), { status: 401 });
+        }
+        return NextResponse.next();
+    }
+
+    let response;
+    let nextLocale;
 
     const pathLocale = locales.find(
         (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     );
 
-    if (pathLocale) {
-        // const isDefaultLocale = pathLocale === defaultLocale;
-        // if (isDefaultLocale) {
-        //     let pathWithoutLocale = pathname.slice(`/${pathLocale}`.length) || "/";
-        //     if (/^\/soldier\/[^\/]+$/.test(pathWithoutLocale))
-        //         return NextResponse.next();
-        //     if (request.nextUrl.search) pathWithoutLocale += request.nextUrl.search;
-        //
-        //     response = NextResponse.redirect(new URL(pathWithoutLocale, request.url));
-        // }
+    nextLocale = pathLocale;
 
-        nextLocale = pathLocale;
-    } else {
+    if (!pathLocale) {
         const isFirstVisit = !request.cookies.has("NEXT_LOCALE");
 
         const locale = isFirstVisit ? getLocale(request, i18n) : defaultLocale;
@@ -79,5 +72,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: "/((?!api|gg|_next/static|_next/image|img/|favicon.ico).*)",
+    matcher: "/((?!gg|_next/static|_next/image|img/|favicon.ico).*)",
 };

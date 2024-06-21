@@ -29,7 +29,10 @@ export default function Navbar({ locale, token }: { locale: string, token?: stri
 
     const handleLogout = () => {
         fetch('/api/logout', {
-            method: 'GET'
+            method: 'GET',
+            headers: {
+                'Authorization': process.env.API_SECRET || ''
+            }
         }).then(() => {
             logout();
         });

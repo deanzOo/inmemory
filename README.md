@@ -42,6 +42,7 @@ This project aims to honor and remember the brave soldiers who sacrificed their 
     ```env
     MONGODB_URI=your_mongodb_uri
     JWT_SECRET=your_jwt_secret
+    API_SECRET=your_api_secret
     ```
 3. Install dependencies:
     ```bash

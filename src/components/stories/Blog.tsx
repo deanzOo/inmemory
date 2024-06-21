@@ -12,12 +12,20 @@ const Blog: React.FC<BlogProps> = ({ title, family }) => {
     useEffect(() => {
         // Fetch records from your API
         async function fetchSoldiers() {
-            const response = await fetch('/api/soldiers');
+            const response = await fetch('/api/soldiers', {
+                headers: {
+                    'Authorization': process.env.API_SECRET || ''
+                }
+            });
             const data = await response.json();
             setSoldiers(data.soldiers);
         }
         async function fetchStories() {
-            const response = await fetch('/api/stories');
+            const response = await fetch('/api/stories', {
+                headers: {
+                    'Authorization': process.env.API_SECRET || ''
+                }
+            });
             const data = await response.json();
             setStories(data.stories.filter((story: Story) => story.family === family));
         }
@@ -48,7 +56,8 @@ const Blog: React.FC<BlogProps> = ({ title, family }) => {
             const res = await fetch('/api/publishStory', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': process.env.API_SECRET || ''
                 },
                 body: JSON.stringify(newStoryObject)
             });

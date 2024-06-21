@@ -7,7 +7,11 @@ export default function RSSFeed() {
     useEffect(() => {
         async function fetchRSSData() {
             try {
-                const response = await fetch('/api/rss-feed');
+                const response = await fetch('/api/rss-feed', {
+                    headers: {
+                        'Authorization': process.env.API_SECRET || ''
+                    }
+                });
                 if (response.ok) {
                     const data = await response.json();
                     setRssFeed(data);

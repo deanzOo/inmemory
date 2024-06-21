@@ -14,7 +14,8 @@ export default function LoginPage({params: {locale}}: {params: {locale: string}}
         const res = await fetch('/api/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': process.env.API_SECRET || ''
             },
             body: JSON.stringify({ username, password })
         });
