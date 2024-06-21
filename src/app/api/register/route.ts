@@ -1,4 +1,3 @@
-// app/api/register/route.ts
 import { NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/mongodb';
 import User from '@/models/User';
