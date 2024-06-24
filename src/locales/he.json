@@ -41,5 +41,12 @@
   "search.placeholder": "חפש...",
   "page.about.text": "עמוד זה מוקדש לזכרם של חללי מערכות ההגנה בצבא ההגנה לישראל שנפלו במלחמת חרבות ברזל. האתר נועד להנציח את גבורתם וזכרם של הלוחמים האמיצים שהקריבו את חייהם למען בטחון מדינת ישראל. כאן תוכלו למצוא סיפורי חיים, תמונות וזיכרונות שנאספו ממשפחות, חברים ומפקדים של החללים. יחד, נשמור על זכרם ונכבד את מורשתם. אנו מזמינים אתכם לשתף בזיכרונות ובסיפורים אישיים כדי להעשיר ולהוסיף לגלריית הזכרון. יהי זכרם ברוך.",
   "page.about.header": "אודותינו",
-  "page.gallery.headline": "גלריה"
+  "page.gallery.headline": "גלריה",
+  "page.donation.header": "תרומות",
+  "page.donation.label.amount": "סכום התרומה",
+  "page.donation.label.name": "שם התורם",
+  "page.donation.label.contact": "פרטי יצירת קשר (מייל או טלפון)",
+  "page.donation.label.unit": "יחידה מועדפת",
+  "page.donation.label.message": "הודעה",
+  "page.donation.button.text": "תרום"
 }

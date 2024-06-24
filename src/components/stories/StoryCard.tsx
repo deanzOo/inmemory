@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import {Story} from "@/lib/types";
+import {useAuth} from "@/context/AuthContext";
 
 interface Reply {
+    story_id: string;
     content: string;
     user_name: string;
 }
 
 interface StoryCardProps {
+    story_id: string;
     user_name: string;
     soldier_name: string;
     image: string;
@@ -15,6 +19,7 @@ interface StoryCardProps {
 }
 
 const StoryCard: React.FC<StoryCardProps> = ({
+                                                 story_id,
                                                  user_name,
                                                  soldier_name,
                                                  image,
@@ -24,12 +29,31 @@ const StoryCard: React.FC<StoryCardProps> = ({
     const [replies, setReplies] = useState<Reply[]>(initialReplies);
     const [newReply, setNewReply] = useState('');
     const [replyPublisher, setReplyPublisher] = useState('');
+    const { user } = useAuth();
 
-    const handleAddReply = () => {
-        if (newReply.trim() !== '' && replyPublisher.trim() !== '') {
-            setReplies([...replies, { user_name: replyPublisher, content: newReply }]);
-            setNewReply('');
-            setReplyPublisher('');
+    const handleAddReply = async () => {
+        if (user && newReply.trim() !== '' && replyPublisher.trim() !== '') {
+            const newReplyObject: Reply = {
+                story_id: story_id,
+                user_name: user.username,
+                content: newReply,
+            };
+            const res = await fetch('/api/publishReply', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': process.env.NEXT_PUBLIC_API_SECRET!
+                },
+                body: JSON.stringify(newReplyObject)
+            });
+
+            if (res.ok) {
+                alert('הצלחה!');
+                setReplies([...replies, newReplyObject]);
+                setNewReply('');
+            } else {
+                alert('כישלון: ' + (await res.json()).error || 'שגיאה לא ידועה');
+            }
         }
     };
 
@@ -50,16 +74,26 @@ const StoryCard: React.FC<StoryCardProps> = ({
                             </li>
                         ))}
                     </ul>
-                    <textarea
-                        className="w-full p-2 border rounded mt-2"
-                        rows={2}
-                        value={newReply}
-                        onChange={(e) => setNewReply(e.target.value)}
-                        placeholder="כתוב תגובה..."
-                    ></textarea>
-                    <button onClick={handleAddReply} className="mt-2 p-2 bg-blue-500 text-white rounded">
-                        הוסף תגובה
-                    </button>
+                    {user && (
+                        <div>
+                            <textarea
+                                className="w-full p-2 border rounded mt-2"
+                                rows={2}
+                                value={newReply}
+                                onChange={(e) => setNewReply(e.target.value)}
+                                placeholder="כתוב תגובה..."
+                            ></textarea>
+
+                            <button onClick={handleAddReply} className="mt-2 p-2 bg-blue-500 text-white rounded">
+                                הוסף תגובה
+                            </button>
+                        </div>
+                    )}
+                    {
+                        !user && (
+                            <span>התחבר כדי לפרסם תגובות חדשים.</span>
+                        )
+                    }
                 </div>
             </div>
         </div>

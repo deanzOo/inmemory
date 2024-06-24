@@ -20,7 +20,7 @@ export default function Sidebar({ locale }: { locale: string }) {
                     <AppLink href='/publicblog' locale={locale} >
                         <FormattedMessage tagName="span" id="layout.sidebar.link.publicstories"/>
                     </AppLink>
-                    <AppLink href='/donations' locale={locale}>
+                    <AppLink href='/donation' locale={locale}>
                         <FormattedMessage tagName="span" id="layout.sidebar.link.donations"/>
                     </AppLink>
                     <SearchBar locale={locale} width="100%" apiEndpoint="/api/search" />

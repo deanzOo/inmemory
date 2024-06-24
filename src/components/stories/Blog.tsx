@@ -1,5 +1,5 @@
 'use client';
-
+// TODO HANDLE CSS
 import React, {useEffect, useState} from 'react';
 import StoryCard from './StoryCard';
 import Select from 'react-select';
@@ -63,11 +63,11 @@ const Blog: React.FC<BlogProps> = ({ title, family }) => {
             });
 
             if (res.ok) {
-                alert('Publish successful!');
+                alert('הצלחה!');
                 setStories([newStoryObject, ...stories]);
                 setNewStory('');
             } else {
-                alert('Publish failed: ' + (await res.json()).error || 'Unknown error');
+                alert('כישלון: ' + (await res.json()).error || 'שגיאה לא ידועה');
             }
         }
     };
@@ -139,12 +139,17 @@ const Blog: React.FC<BlogProps> = ({ title, family }) => {
                     {filteredStories.length > 0 ? (
                         filteredStories.map((story, index) => (
                             <StoryCard
+                                story_id={story._id!}
                                 key={index}
                                 user_name={story.user_name}
                                 soldier_name={story.soldier.name}
                                 image={story.soldier.image}
                                 content={story.content}
-                                initialReplies={story.replies}
+                                initialReplies={story.replies.map(reply => ({
+                                    user_name: reply.user_name,
+                                    content: reply.content,
+                                    story_id: story._id!
+                                }))}
                             />
                         ))
                     ) : (

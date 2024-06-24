@@ -34,5 +34,12 @@
   "search.placeholder": "Search...",
   "page.about.text": "This page is dedicated to the memory of the fallen soldiers of the Israel Defense Forces who perished in the Iron Swords War. The site is intended to commemorate the bravery and memory of the courageous fighters who sacrificed their lives for the security of the State of Israel. Here, you can find life stories, photos, and memories collected from the families, friends, and commanders of the fallen. Together, we will preserve their memory and honor their legacy. We invite you to share personal memories and stories to enrich and add to the memory gallery. May their memory be blessed.",
   "page.about.header": "About",
-  "page.gallery.headline": "Gallery"
+  "page.gallery.headline": "Gallery",
+  "page.donation.header": "Donations",
+  "page.donation.label.amount": "Donation Amount",
+  "page.donation.label.name": "Name",
+  "page.donation.label.contact": "Contact (Email or Phone)",
+  "page.donation.label.unit": "Preferred Unit",
+  "page.donation.label.message": "Message",
+  "page.donation.button.text": "Donate"
 }
