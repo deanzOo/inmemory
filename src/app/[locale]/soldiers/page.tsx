@@ -2,6 +2,9 @@
 import { useState, useEffect } from 'react';
 import Card from "@/components/gallery/Card";
 import {Soldier} from "@/lib/types";
+import MessagesContainer from "@/components/common/MessagesContainer";
+import {FormattedMessage} from "react-intl";
+import "./Soldiers.css";
 
 type GalleryParams = {
     params: {
@@ -16,7 +19,7 @@ export default function Gallery({params: {locale}}: GalleryParams) {
         async function fetchSoldiers() {
             const response = await fetch('/api/soldiers', {
                 headers: {
-                    'Authorization': process.env.API_SECRET || ''
+                    'Authorization': process.env.NEXT_PUBLIC_API_SECRET!
                 }
             });
             const data = await response.json();
@@ -26,8 +29,12 @@ export default function Gallery({params: {locale}}: GalleryParams) {
     }, []);
 
     return (
-        <div className="container mx-auto mt-10">
-            <h1 className="text-3xl font-bold text-center mb-6">Gallery</h1>
+        <div className="gallery_container">
+            <MessagesContainer locale={locale}>
+                <h1 className="gallery_header">
+                    <FormattedMessage id="page.gallery.headline" />
+                </h1>
+            </MessagesContainer>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {soldiers.map((soldier, index) => (
                     <Card locale={locale} key={index} soldier={soldier} />

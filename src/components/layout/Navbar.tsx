@@ -31,7 +31,7 @@ export default function Navbar({ locale, token }: { locale: string, token?: stri
         fetch('/api/logout', {
             method: 'GET',
             headers: {
-                'Authorization': process.env.API_SECRET || ''
+                'Authorization': process.env.NEXT_PUBLIC_API_SECRET!
             }
         }).then(() => {
             logout();

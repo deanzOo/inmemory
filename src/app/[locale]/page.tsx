@@ -3,6 +3,7 @@ import MediaCarousel from "@/components/home/Carousel";
 import RSSFeed from "@/components/home/RSSFeed";
 import React from "react";
 import AlertsHistory from "@/components/home/AlertsHistory";
+import SearchBar from "@/components/searchbar/SearchBar";
 
 type HomeProps = {
     params: { locale: string };
@@ -16,9 +17,7 @@ export default async function Home({ params: { locale } }: HomeProps) {
                 {intl.formatMessage({ id: "page.home.header" })}
             </h1>
             <div className="w-50 mb-4">
-                <label className="block mb-2">
-                    {intl.formatMessage({ id: "page.home.search.label" })}
-                </label>
+                <SearchBar locale={locale} width="100%" apiEndpoint="/api/search" />
             </div>
             <MediaCarousel/>
             <div className="flex flex-row justify-content-evenly w-100">

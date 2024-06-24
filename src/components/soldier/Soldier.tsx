@@ -25,7 +25,7 @@ const SoldierComponent = ({ id, stories_title, candle_title }: SoldierComponentP
             const soldiersData = await (await fetch('/api/soldiers/' + id,
                 {
                     headers: {
-                        'Authorization': process.env.API_SECRET || ''
+                        'Authorization': process.env.NEXT_PUBLIC_API_SECRET!
                     }
                 })).json();
             let soldier = soldiersData.soldier;
@@ -33,7 +33,7 @@ const SoldierComponent = ({ id, stories_title, candle_title }: SoldierComponentP
             const storiesData = await (await fetch('/api/stories/' + id,
                 {
                     headers: {
-                        'Authorization': process.env.API_SECRET || ''
+                        'Authorization': process.env.NEXT_PUBLIC_API_SECRET!
                     }
                 })).json();
             soldier.stories = storiesData.stories;
@@ -52,26 +52,26 @@ const SoldierComponent = ({ id, stories_title, candle_title }: SoldierComponentP
     if (!soldier) return <div>Loading...</div>;
 
     return (
-        <div className="flex flex-row justify-content-between p-5 w-100 h-100">
+        <div className="soldier-container">
             <div>
-                <h1 className="text-2xl title">{soldier.rank + ' ' + soldier.name}</h1>
+                <h1 className="title">{soldier.rank + ' ' + soldier.name}</h1>
                 <Image src={soldier.image} alt={`${soldier.name}`} width={250} height={250}
-                       className="border-2 rounded-5 my-10"/>
-                <p className="mt-2">{soldier.unit}</p>
-                <p className="mt-2">
+                       className="image"/>
+                <p className="paragraph">{soldier.unit}</p>
+                <p className="paragraph">
                     {formatDate(soldier.dateOfDeath)}
                 </p>
             </div>
-            <div className="relative w-50 mx-10">
-                <div className="absolute bottom-10 right-0 w-100 h-75 mb-10">
+            <div className="candle_container">
+                <div className="candle_frame">
                     <span>{candle_title}</span>
                     <Candle id={soldier._id} headline="" />
                 </div>
             </div>
-            <div className="overflow-auto">
-                <h2 className="text-xl title text-center">{stories_title}</h2>
+            <div className="stories_container">
+                <h2 className="title">{stories_title}</h2>
                 {soldier.stories.map(story => (
-                    <div key={story._id} className="mt-4">
+                    <div key={story._id}>
                         <StoryCard user_name={story.user_name} soldier_name={story.soldier.name} image={story.soldier.image} content={story.content} initialReplies={story.replies} />
                     </div>
                 ))}

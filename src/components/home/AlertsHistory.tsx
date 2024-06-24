@@ -9,7 +9,7 @@ export default function AlertsHistory() {
             try {
                 const response = await fetch('/api/alerts', {
                     headers: {
-                        'Authorization': process.env.API_SECRET || ''
+                        'Authorization': process.env.NEXT_PUBLIC_API_SECRET!
                     }
                 });
                 if (response.ok) {

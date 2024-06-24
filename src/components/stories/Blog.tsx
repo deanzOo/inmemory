@@ -14,7 +14,7 @@ const Blog: React.FC<BlogProps> = ({ title, family }) => {
         async function fetchSoldiers() {
             const response = await fetch('/api/soldiers', {
                 headers: {
-                    'Authorization': process.env.API_SECRET || ''
+                    'Authorization': process.env.NEXT_PUBLIC_API_SECRET!
                 }
             });
             const data = await response.json();
@@ -23,7 +23,7 @@ const Blog: React.FC<BlogProps> = ({ title, family }) => {
         async function fetchStories() {
             const response = await fetch('/api/stories', {
                 headers: {
-                    'Authorization': process.env.API_SECRET || ''
+                    'Authorization': process.env.NEXT_PUBLIC_API_SECRET!
                 }
             });
             const data = await response.json();
@@ -57,7 +57,7 @@ const Blog: React.FC<BlogProps> = ({ title, family }) => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': process.env.API_SECRET || ''
+                    'Authorization': process.env.NEXT_PUBLIC_API_SECRET!
                 },
                 body: JSON.stringify(newStoryObject)
             });

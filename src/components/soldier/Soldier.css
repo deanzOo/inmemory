@@ -1,15 +1,49 @@
 .soldier-container {
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    max-width: 600px;
-    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1.25rem;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
 }
-.candle {
-    cursor: pointer;
-    font-size: 2rem;
+
+.candle_container {
+    position: relative;
+    width: 33%;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+
+.candle_frame {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 0;
+    width: 100%;
+    height: 75%;
+    margin-bottom: 2.5rem;
 }
 
 .title {
     color: #00bf86;
+    font-size: 1.25rem;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.image {
+    width: 250px;
+    height: 250px;
+    border-width: 2px;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-radius: 1rem;
+}
+
+.paragraph {
+    margin-top: 0.5rem;
+}
+
+.stories_container {
+    overflow: auto;
 }

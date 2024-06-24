@@ -1,6 +1,6 @@
 "use client";
 import { FormattedMessage } from "react-intl";
-import MessagesContainer from "../common/MessagesContainer";
+import MessagesContainer from "@/components/common/MessagesContainer";
 import Image from "next/image";
 import AppLink from "@/components/common/AppLink";
 

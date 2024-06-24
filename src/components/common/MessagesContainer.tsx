@@ -35,7 +35,7 @@ const MessagesContainer = ({ locale, children }: MessagesContainerProps) => {
 
     return (
         <IntlProvider locale={locale} messages={messages}>
-            <div>{children}</div>
+            {children}
         </IntlProvider>
     );
 };

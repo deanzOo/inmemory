@@ -34,7 +34,7 @@ export function middleware(request: NextRequest) {
 
     if (pathname.startsWith('/api')) {
         const token = request.headers.get('authorization');
-        if (token !== process.env.API_SECRET) {
+        if (token !== process.env.NEXT_PUBLIC_API_SECRET) {
             return new NextResponse(JSON.stringify({ message: 'Unauthorized' }), { status: 401 });
         }
         return NextResponse.next();

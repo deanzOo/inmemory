@@ -3,6 +3,7 @@ import MessagesContainer from "@/components/common/MessagesContainer";
 import {FormattedMessage} from "react-intl";
 import AppLink from "@/components/common/AppLink";
 import {useAuth} from "@/context/AuthContext";
+import SearchBar from "@/components/searchbar/SearchBar";
 
 export default function Sidebar({ locale }: { locale: string }) {
     const { user } = useAuth();
@@ -22,7 +23,7 @@ export default function Sidebar({ locale }: { locale: string }) {
                     <AppLink href='/donations' locale={locale}>
                         <FormattedMessage tagName="span" id="layout.sidebar.link.donations"/>
                     </AppLink>
-                    <span>חפש</span>
+                    <SearchBar locale={locale} width="100%" apiEndpoint="/api/search" />
                     {user && (
                         <AppLink href='/addSoldier' locale={locale}>
                             <FormattedMessage tagName="span" id="layout.sidebar.link.addsoldier"/>

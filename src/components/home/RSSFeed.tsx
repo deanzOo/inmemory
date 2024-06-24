@@ -9,7 +9,7 @@ export default function RSSFeed() {
             try {
                 const response = await fetch('/api/rss-feed', {
                     headers: {
-                        'Authorization': process.env.API_SECRET || ''
+                        'Authorization': process.env.NEXT_PUBLIC_API_SECRET!
                     }
                 });
                 if (response.ok) {

@@ -16,7 +16,7 @@ export default function RegisterPage({params: {locale}}: {params: {locale: strin
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': process.env.API_SECRET || ''
+                'Authorization': process.env.NEXT_PUBLIC_API_SECRET!
             },
             body: JSON.stringify({ username, password })
         });

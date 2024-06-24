@@ -1,18 +1,24 @@
 import React from 'react';
 import './About.css';
+import MessagesContainer from "@/components/common/MessagesContainer";
+import {FormattedMessage} from "react-intl";
+import {getIntl} from "@/lib/intl";
 
-const About: React.FC = () => {
+export default async function About({params: {locale}}: {params: { locale: string }}) {
+    const intl = await getIntl(locale);
     return (
         <div className="aboutContainer">
-            <h1 className="text-4xl font-bold mb-8">אודותינו</h1>
+            <h1 className="text-4xl font-bold mb-8">
+                {intl.formatMessage({ id: "page.about.header" })}
+            </h1>
             <div className="w-full max-w-2xl">
                 <p className="mb-4">
-                    עמוד זה מוקדש לזכרם של חללי מערכות ההגנה בצבא ההגנה לישראל שנפלו במלחמת חרבות ברזל. האתר נועד להנציח את גבורתם וזכרם של הלוחמים האמיצים שהקריבו את חייהם למען בטחון מדינת ישראל. כאן תוכלו למצוא סיפורי חיים, תמונות וזיכרונות שנאספו ממשפחות, חברים ומפקדים של החללים. יחד, נשמור על זכרם ונכבד את מורשתם. אנו מזמינים אתכם לשתף בזיכרונות ובסיפורים אישיים כדי להעשיר ולהוסיף לגלריית הזכרון. יהי זכרם ברוך.
+                    <MessagesContainer locale={locale}>
+                        {intl.formatMessage({ id: "page.about.text" })}
+                    </MessagesContainer>
                 </p>
 
             </div>
         </div>
     );
 }
-
-export default About;
