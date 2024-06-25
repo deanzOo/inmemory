@@ -8,6 +8,7 @@ import {FormattedMessage} from "react-intl";
 export default function LoginPage({params: {locale}}: {params: {locale: string}}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -21,10 +22,9 @@ export default function LoginPage({params: {locale}}: {params: {locale: string}}
         });
 
         if (res.ok) {
-            alert('Login successful!');
             window.location.href = '/';  // Redirect to home or dashboard
         } else {
-            alert('Login failed.');
+            setError('כישלון. ' + (await res.json()).error || 'שגיאה לא ידועה');
         }
     };
 

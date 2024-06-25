@@ -10,15 +10,17 @@ const DonationPage = ({params: {locale}}: {params: { locale: string }}) => {
     const [contactInfo, setContactInfo] = useState('');
     const [preferredUnit, setPreferredUnit] = useState('');
     const [message, setMessage] = useState('');
+    const [reply, setReply] = useState('');
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        alert('THANK YOU!')
+        setReply('THANK YOU! תודה לך!')
     };
 
     return (
         <MessagesContainer locale={locale}>
             <div className="form_container">
+                {reply && <div className="reply">{reply}</div>}
                 <h1 className="form_header">
                     <FormattedMessage id="page.donation.header" />
                 </h1>

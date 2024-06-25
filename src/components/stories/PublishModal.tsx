@@ -9,6 +9,7 @@ const PublishModal = ({ isOpen, onClose, onSubmit, family, soldiers }: { isOpen:
     const { user } = useAuth();
     const [selectedSoldier, setSelectedSoldier] = useState<Soldier | null>(null);
     const [newStory, setNewStory] = useState('');
+    const [error, setError] = useState('');
 
     const handleOverlayClick = (e: any) => {
         if (e.target === e.currentTarget) {
@@ -48,11 +49,10 @@ const PublishModal = ({ isOpen, onClose, onSubmit, family, soldiers }: { isOpen:
             });
 
             if (res.ok) {
-                alert('הצלחה!');
                 onSubmit(newStoryObject);
                 setNewStory('');
             } else {
-                alert('כישלון: ' + (await res.json()).error || 'שגיאה לא ידועה');
+                setError('כישלון: ' + (await res.json()).error || 'שגיאה לא ידועה');
             }
         }
     };
@@ -61,6 +61,7 @@ const PublishModal = ({ isOpen, onClose, onSubmit, family, soldiers }: { isOpen:
 
     return (
         <div className="modal-overlay" onClick={handleOverlayClick}>
+            <span>{error}</span>
             <div className="modal">
                 <button className="modal-close" onClick={handleConfirmation}>X</button>
 

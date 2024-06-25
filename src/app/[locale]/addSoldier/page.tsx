@@ -25,6 +25,7 @@ export default function AddSoldier({ params: { locale } }: AddSoldierProps) {
         dateOfDeath: '',
         image: '',
     });
+    const [message, setMessage] = useState('');
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
@@ -47,7 +48,7 @@ export default function AddSoldier({ params: { locale } }: AddSoldierProps) {
 
         if (response.ok) {
             const result = await response.json();
-            alert('Soldier added successfully!');
+            setMessage('Soldier added successfully! חייל נוסף בהצלחה!');
             setFormData({
                 name: '',
                 rank: '',
@@ -57,7 +58,7 @@ export default function AddSoldier({ params: { locale } }: AddSoldierProps) {
             });
         } else {
             const error = await response.json();
-            alert(`Error: ${error.message}`);
+            setMessage(`שגיאה: ${error.message}`);
         }
     };
 
@@ -66,6 +67,7 @@ export default function AddSoldier({ params: { locale } }: AddSoldierProps) {
             <div className="addSoldierContainer">
                     <FormattedMessage tagName="h1" id="page.addSoldier.title" />
                 <div className="formContainer">
+                    <span>{message}</span>
                     <form onSubmit={handleSubmit}>
                         <div className="inputContainer">
                             <label htmlFor="name">

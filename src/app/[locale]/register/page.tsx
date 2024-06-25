@@ -9,6 +9,7 @@ import {FormattedMessage} from "react-intl";
 export default function RegisterPage({params: {locale}}: {params: {locale: string}}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -22,10 +23,9 @@ export default function RegisterPage({params: {locale}}: {params: {locale: strin
         });
 
         if (res.ok) {
-            alert('Registration successful!');
             await router.push('/login');
         } else {
-            alert('Registration failed: ' + (await res.json()).error || 'Unknown error');
+            setError('משתמש תפוס ' + (await res.json()).error || 'שגיאה לא ידועה');
         }
     };
 
@@ -33,6 +33,7 @@ export default function RegisterPage({params: {locale}}: {params: {locale: strin
         <div className="registerPage">
             <MessagesContainer locale={locale}>
                 <div className="registerContainer">
+                    {error}
                     <h1 className="registerHeader">
                         <FormattedMessage id="page.register.register.label" />
                     </h1>
