@@ -23,6 +23,7 @@
   "page.home.header": "Welcome to the Memorial Website",
   "page.home.search.label": "Search...",
   "page.publicblog.header": "Fallen Stories",
+  "page.familiesblog.header": "Family Stories",
   "page.soldier.stories.titles": "Stories",
   "page.candle.headline": "Click on the candle to light it for 24 hours",
   "page.login.login.label": "Login",
@@ -41,5 +42,14 @@
   "page.donation.label.contact": "Contact (Email or Phone)",
   "page.donation.label.unit": "Preferred Unit",
   "page.donation.label.message": "Message",
-  "page.donation.button.text": "Donate"
+  "page.donation.button.text": "Donate",
+  "page.contact.title": "Contact",
+  "page.contact.name": "Name",
+  "page.contact.email": "Email",
+  "page.contact.message": "Message",
+  "page.contact.send": "Send",
+  "blog.publish.label": "Write about",
+  "blog.search.label": "Search stories about...",
+  "blog.noStories": "No stories found",
+  "blog.loginToPublish": "Login to publish a story"
 }

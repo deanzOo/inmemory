@@ -1,0 +1,16 @@
+.footerContainer {
+    background-color: rgb(31 41 55);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: end;
+    column-gap: 2.5rem;
+    margin-top: auto;
+}
+
+.footerItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

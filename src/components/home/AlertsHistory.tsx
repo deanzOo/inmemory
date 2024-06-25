@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import './AlertsHistory.css';
 
 export default function AlertsHistory() {
     const [alertsFeed, setAlertsFeed] = useState([]);
@@ -27,21 +28,21 @@ export default function AlertsHistory() {
     }, []);
 
     return (
-        <div id="alerts_feed" className="mb-4 text-center h-48 overflow-y-auto border border-gray-300 shadow-lg p-4 rounded-lg w-25">
-            <span className="block mb-2 font-bold">* עדכוני צבע אדום אמת *</span>
+        <div className="feed">
+            <span className="alerts_header">* עדכוני צבע אדום אמת *</span>
             <div>
                 {alertsFeed.length > 0 ? (
                     alertsFeed.map((item: {alertDate: string | undefined, title: any, data: string}, index) => (
-                        <div key={index} className="my-2">
-                            <span className="text-blue-600 hover:underline">
+                        <div key={index} className="alerts_container">
+                            <span className="link">
                                 {item.alertDate}
                             </span>
                             <br/>
-                            <span className="text-blue-600 hover:underline">
+                            <span className="link">
                                 {item.title}
                             </span>
                             <br/>
-                            <span className="text-blue-600 hover:underline">
+                            <span className="link">
                                 {item.data}
                             </span>
                         </div>

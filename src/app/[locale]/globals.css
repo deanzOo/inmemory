@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 body, html {
     margin: 0;
     padding: 0;
@@ -24,52 +20,38 @@ body, html {
     overflow: hidden;
 }
 
-#sidebar {
-    width: 250px;
-    padding: 10px;
-    flex-shrink: 0;
-    overflow: hidden; /* Ensure it doesn't scroll */
-}
-
 h1, p {
     margin: 0;
 }
 
-/* Custom scrollbar styling */
-#rss_feed::-webkit-scrollbar,
-#alerts_feed::-webkit-scrollbar {
+.feed::-webkit-scrollbar {
     width: 12px;
 }
 
-#rss_feed::-webkit-scrollbar-thumb,
-#alerts_feed::-webkit-scrollbar-thumb {
-    background-color: #888; /* Change this color to your preference */
+.feed::-webkit-scrollbar-thumb {
+    background-color: #888;
     border-radius: 10px;
-    border: 3px solid #f1f1f1; /* Adds space around the scrollbar thumb */
+    border: 3px solid #f1f1f1;
 }
 
-#rss_feed::-webkit-scrollbar-thumb:hover,
-#alerts_feed::-webkit-scrollbar-thumb:hover {
-    background-color: #555; /* Change this color to your preference */
+.feed::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
 }
 
-#rss_feed,
-#alerts_feed {
-    scrollbar-color: #888 #f1f1f1; /* For Firefox */
-    scrollbar-width: thin; /* For Firefox */
-    direction: ltr; /* Ensure scrollbar appears on the right */
+.feed {
+    scrollbar-color: #888 #f1f1f1;
+    scrollbar-width: thin;
+    direction: ltr;
+    margin-bottom: 1rem;
+    text-align: center;
+    height: 12rem;
+    overflow-y: auto;
+    border-width: 1px;
+    border-color: rgb(209 213 219);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: 25%;
+    background-color: #1f304c;
 }
-
-.link {
-    color: #00f3aa; /* Blue color for links */
-    text-decoration: none; /* Remove default underline */
-    border-bottom: 2px solid transparent; /* Add transparent border */
-    transition: color 0.3s ease, border-bottom-color 0.3s ease; /* Smooth transition */
-}
-
-.link:hover {
-    color: #00b37d; /* Darker blue on hover */
-    border-bottom-color: #00b37d; /* Add border color on hover */
-}
-
 

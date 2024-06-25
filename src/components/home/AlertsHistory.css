@@ -1,0 +1,18 @@
+.alerts_header {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.alerts_container {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.alerts_data {
+    color: rgb(37 99 235);
+}
+
+.alerts_data:hover {
+    text-decoration-line: underline;
+}

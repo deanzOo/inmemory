@@ -1,42 +1,45 @@
 import React from 'react';
+import './Contact.css';
+import {getIntl} from "@/lib/intl";
 
-const Contact: React.FC = () => {
+const Contact = async ({params: {locale}}: {params: {locale: string}}) => {
+    const intl = await getIntl(locale);
+    const name_placeholder = intl.formatMessage({id: "page.contact.name"});
+    const email_placeholder = intl.formatMessage({id: "page.contact.email"});
+    const message_placeholder = intl.formatMessage({id: "page.contact.message"});
     return (
-        <div className="p-4">
-                <h1 className="text-4xl font-bold mb-8">צור קשר</h1>
-                <form className="w-full max-w-lg">
-                    <div className="mb-4">
+        <div className="contact_container">
+                <h1>
+                    {intl.formatMessage({id: "page.contact.title"})}
+                </h1>
+                <form className="contact_form">
+                    <div className="contact_input_container">
                         <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="name"
                             type="text"
-                            placeholder="שם"
+                            placeholder={name_placeholder}
                         />
                     </div>
-                    <div className="mb-4">
+                    <div className="contact_input_container">
                         <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="email"
                             type="email"
-                            placeholder="Email"
+                            placeholder={email_placeholder}
                         />
                     </div>
-                    <div className="mb-4">
+                    <div className="contact_input_container">
                         <textarea
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="message"
-                            placeholder="הודעה"
+                            placeholder={message_placeholder}
                             rows={4}
                         />
                     </div>
-                    <div className="flex items-center justify-between">
-                        <button
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            type="button"
-                        >
-                            שלח
-                        </button>
-                    </div>
+                    <button
+                        className="contact_btn"
+                        type="button"
+                    >
+                        {intl.formatMessage({id: "page.contact.send"})}
+                    </button>
                 </form>
             </div>
     );

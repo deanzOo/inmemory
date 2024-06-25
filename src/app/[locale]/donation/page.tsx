@@ -88,7 +88,7 @@ const DonationPage = ({params: {locale}}: {params: { locale: string }}) => {
                             name="message"
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
-                            className="form_input h-28"
+                            className="form_textarea"
                         />
                     </div>
                     <button

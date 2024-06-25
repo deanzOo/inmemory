@@ -1,14 +1,56 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.registerContainer {
+.registerPage {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    --tw-bg-opacity: 1;
-    background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+    background-color: rgb(243 244 246);
     width: 100% !important;
+    margin: auto;
+}
+
+.registerContainer {
+    background-color: rgb(255 255 255);
+    padding: 2rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 28rem;
+    text-align: center;
+}
+
+.registerHeader {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.registerInputContainer {
+    margin-bottom: 1rem;
+}
+
+.registerInputHeader {
+    display: block;
+    color: rgb(55 65 81);
+    margin-bottom: 0.5rem;
+}
+
+.registerInput {
+    width: 100%;
+    padding: 0.75rem 0.5rem;
+    border-width: 1px;
+    border-radius: 0.375rem;
+}
+
+.registerButton {
+    width: 100%;
+    padding: 0.5rem;
+    color: white;
+    border-radius: 0.375rem;
+    background-color: rgb(59 130 246);
+}
+
+.registerButton:hover {
+    background-color: rgb(37 99 235);
 }

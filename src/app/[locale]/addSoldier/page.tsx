@@ -3,6 +3,7 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import MessagesContainer from "@/components/common/MessagesContainer";
 import {FormattedMessage} from "react-intl";
+import './addSoldier.css';
 
 interface FormData {
     name: string;
@@ -61,15 +62,13 @@ export default function AddSoldier({ params: { locale } }: AddSoldierProps) {
     };
 
     return (
-        <div className="flex flex-column items-center pt-10 min-h-screen bg-gray-100 w-100">
-            <MessagesContainer locale={locale}>
-                <FormattedMessage tagName="h1" id="page.addSoldier.title" />
-            </MessagesContainer>
-            <div className="mt-20">
-                <MessagesContainer locale={locale}>
+        <MessagesContainer locale={locale}>
+            <div className="addSoldierContainer">
+                    <FormattedMessage tagName="h1" id="page.addSoldier.title" />
+                <div className="formContainer">
                     <form onSubmit={handleSubmit}>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                        <div className="inputContainer">
+                            <label htmlFor="name">
                                 <FormattedMessage id="page.addSoldier.name" />:
                             </label>
                             <input
@@ -79,11 +78,10 @@ export default function AddSoldier({ params: { locale } }: AddSoldierProps) {
                                 value={formData.name}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                             />
                         </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="rank">
+                        <div className="inputContainer">
+                            <label htmlFor="rank">
                                 <FormattedMessage id="page.addSoldier.rank" />:
                             </label>
                             <input
@@ -93,11 +91,10 @@ export default function AddSoldier({ params: { locale } }: AddSoldierProps) {
                                 value={formData.rank}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                             />
                         </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="unit">
+                        <div className="inputContainer">
+                            <label htmlFor="unit">
                                 <FormattedMessage id="page.addSoldier.unit" />:
                             </label>
                             <input
@@ -107,11 +104,10 @@ export default function AddSoldier({ params: { locale } }: AddSoldierProps) {
                                 value={formData.unit}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                             />
                         </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="dateOfDeath">
+                        <div className="inputContainer">
+                            <label htmlFor="dateOfDeath">
                                 <FormattedMessage id="page.addSoldier.deathdate" />:
                             </label>
                             <input
@@ -121,11 +117,10 @@ export default function AddSoldier({ params: { locale } }: AddSoldierProps) {
                                 value={formData.dateOfDeath}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                             />
                         </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
+                        <div className="inputContainer">
+                            <label htmlFor="image">
                                 <FormattedMessage id="page.addSoldier.image" />:
                             </label>
                             <input
@@ -135,18 +130,14 @@ export default function AddSoldier({ params: { locale } }: AddSoldierProps) {
                                 value={formData.image}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                             />
                         </div>
-                        <button
-                            type="submit"
-                            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-                        >
+                        <button className="inputContainer_button" type="submit">
                             <FormattedMessage id="page.addSoldier.button.add" />
                         </button>
                     </form>
-                </MessagesContainer>
+                </div>
             </div>
-        </div>
+        </MessagesContainer>
     );
 }

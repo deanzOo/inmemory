@@ -15,7 +15,7 @@ export default function BootstrapCarousel() {
         setIndex(selectedIndex);
     };
     return (
-        <Carousel activeIndex={index} onSelect={handleSelect} className="h-max">
+        <Carousel activeIndex={index} onSelect={handleSelect} style={{"height": "max-content"}}>
             {bootstrap.map((item) => (
                 <Carousel.Item key={item.id} interval={4000}>
                     {

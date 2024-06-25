@@ -25,7 +25,7 @@ export default function Gallery({params: {locale}}: GalleryParams) {
             const data = await response.json();
             setSoldiers(data.soldiers);
         }
-        fetchSoldiers();
+        fetchSoldiers().then();
     }, []);
 
     return (
@@ -35,7 +35,7 @@ export default function Gallery({params: {locale}}: GalleryParams) {
                     <FormattedMessage id="page.gallery.headline" />
                 </h1>
             </MessagesContainer>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="gallery">
                 {soldiers.map((soldier, index) => (
                     <Card locale={locale} key={index} soldier={soldier} />
                 ))}

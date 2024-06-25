@@ -7,11 +7,6 @@ export interface Soldier {
     dateOfDeath: string;
 }
 
-export interface BlogProps {
-    title: string;
-    family: boolean;
-}
-
 export interface Story {
     _id?: string;
     user_name: string;
@@ -22,7 +17,7 @@ export interface Story {
     solder_id: string,
     content: string;
     family: boolean;
-    replies: { content: string; user_name: string; }[];
+    replies: { story_id: string, content: string; user_name: string; }[];
 }
 
 export interface User {

@@ -72,7 +72,14 @@ const SoldierComponent = ({ id, stories_title, candle_title }: SoldierComponentP
                 <h2 className="title">{stories_title}</h2>
                 {soldier.stories.map(story => (
                     <div key={story._id}>
-                        <StoryCard user_name={story.user_name} soldier_name={story.soldier.name} image={story.soldier.image} content={story.content} initialReplies={story.replies} />
+                        <StoryCard
+                            user_name={story.user_name}
+                            soldier_name={story.soldier.name}
+                            image={story.soldier.image}
+                            content={story.content}
+                            initialReplies={story.replies}
+                            story_id={story._id!}
+                        />
                     </div>
                 ))}
             </div>

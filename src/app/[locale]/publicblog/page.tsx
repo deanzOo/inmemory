@@ -9,7 +9,7 @@ type PublicBlogProps = {
 const PublicBlog = async ({ params: { locale } }: PublicBlogProps) => {
     const intl = await getIntl(locale);
 
-    return <Blog title={intl.formatMessage({ id: "page.publicblog.header" })} family={false} />
+    return <Blog title={intl.formatMessage({ id: "page.publicblog.header" })} family={false} locale={locale} />
 };
 
 export default PublicBlog;

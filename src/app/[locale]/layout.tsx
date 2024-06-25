@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import {getDirection, getIntl} from "@/lib/intl";
 import {cookies} from "next/headers";
 import { AuthProvider } from '@/context/AuthContext';
+import React from "react";
 
 
 

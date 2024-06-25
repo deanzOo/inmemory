@@ -4,6 +4,7 @@ import RSSFeed from "@/components/home/RSSFeed";
 import React from "react";
 import AlertsHistory from "@/components/home/AlertsHistory";
 import SearchBar from "@/components/searchbar/SearchBar";
+import "./Home.css"
 
 type HomeProps = {
     params: { locale: string };
@@ -12,16 +13,16 @@ type HomeProps = {
 export default async function Home({ params: { locale } }: HomeProps) {
     const intl = await getIntl(locale);
     return (
-        <div id="content" className="flex flex-column items-center justify-evenly min-h-max bg-gray-100 w-100">
-            <h1 className="text-2xl font-bold mb-4 text-center">
+        <div className="homeContainer">
+            <h1 className="homeHeader">
                 {intl.formatMessage({ id: "page.home.header" })}
             </h1>
-            <div className="w-50 mb-4">
+            <div className="homeSearchContainer">
                 <SearchBar locale={locale} width="100%" apiEndpoint="/api/search" />
             </div>
             <MediaCarousel/>
-            <div className="flex flex-row justify-content-evenly w-100">
-                <RSSFeed/>
+            <div className="feedsContainer">
+                <RSSFeed locale={locale} />
                 <AlertsHistory/>
             </div>
         </div>

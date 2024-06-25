@@ -1,10 +1,9 @@
-'use client';
-
-import React from 'react';
 import Blog from "@/components/stories/Blog";
+import {getIntl} from "@/lib/intl";
 
-const FamiliesBlog = () => {
-    return <Blog title="סיפורי משפחות" family={true} />;
+const FamiliesBlog = async ({params: {locale}}: {params: { locale: string }}) => {
+    const intl = await getIntl(locale);
+    return <Blog title={intl.formatMessage({ id: "page.familiesblog.header" })} family={true} locale={locale} />;
 };
 
 export default FamiliesBlog;

@@ -23,6 +23,7 @@
   "page.home.header": "ברוכים הבאים לאתר הנצחה",
   "page.home.search.label": "חפש...",
   "page.publicblog.header": "סיפורי חללים",
+  "page.familiesblog.header": "סיפורי משפחות",
   "page.addSoldier.title": "הוספת חייל",
   "page.addSoldier.name": "שם",
   "page.addSoldier.rank": "דרגה",
@@ -48,5 +49,14 @@
   "page.donation.label.contact": "פרטי יצירת קשר (מייל או טלפון)",
   "page.donation.label.unit": "יחידה מועדפת",
   "page.donation.label.message": "הודעה",
-  "page.donation.button.text": "תרום"
+  "page.donation.button.text": "תרום",
+  "page.contact.title": "צור קשר",
+  "page.contact.name": "שם",
+  "page.contact.email": "אימייל",
+  "page.contact.message": "הודעה",
+  "page.contact.send": "שלח",
+  "blog.publish.label": "כתוב על",
+  "blog.search.label": "חפש סיפורים על...",
+  "blog.noStories": "לא נמצאו סיפורים",
+  "blog.loginToPublish": "התחבר כדי לפרסם סיפור"
 }

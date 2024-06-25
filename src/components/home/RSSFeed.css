@@ -1,0 +1,10 @@
+.rss_header {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.rss_link_container {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}

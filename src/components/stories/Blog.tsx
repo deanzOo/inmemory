@@ -1,13 +1,14 @@
 'use client';
-// TODO HANDLE CSS
 import React, {useEffect, useState} from 'react';
 import StoryCard from './StoryCard';
 import Select from 'react-select';
-import {BlogProps, Soldier, Story} from "@/lib/types";
+import {Soldier, Story} from "@/lib/types";
 import {useAuth} from "@/context/AuthContext";
 import './Blog.css';
+import MessagesContainer from "@/components/common/MessagesContainer";
+import {FormattedMessage} from "react-intl";
 
-const Blog: React.FC<BlogProps> = ({ title, family }) => {
+const Blog = ({ title, family, locale }: {title: string, family: boolean, locale: string}) => {
     const [soldiers, setSoldiers] = useState<Soldier[]>([]);
     useEffect(() => {
         // Fetch records from your API
@@ -29,9 +30,9 @@ const Blog: React.FC<BlogProps> = ({ title, family }) => {
             const data = await response.json();
             setStories(data.stories.filter((story: Story) => story.family === family));
         }
-        fetchSoldiers();
-        fetchStories();
-    }, []);
+        fetchSoldiers().then();
+        fetchStories().then();
+    }, [family]);
     const [stories, setStories] = useState<Story[]>([]);
     const [newStory, setNewStory] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
@@ -90,74 +91,82 @@ const Blog: React.FC<BlogProps> = ({ title, family }) => {
     );
 
     return (
-        <div className="blogContent">
-            {user && (
-                <div className="w-75 mb-4">
-                    <label className="block mb-2">חייל:</label>
+        <MessagesContainer locale={locale}>
+            <div className="blogContent">
+                {user && (
+                    <div className="publish_container">
+                        <FormattedMessage tagName="label" id="blog.publish.label" />
+                        <Select
+                            options={soldiers}
+                            value={selectedSoldier}
+                            onChange={handleSelectChange}
+                            getOptionLabel={(option: Soldier) => option.name}
+                            getOptionValue={(option: Soldier) => option.name}
+                            placeholder=""
+                            className="publish_select"
+                            isClearable
+                        />
+
+                        <textarea
+                            className="publish_content"
+                            rows={3}
+                            value={newStory}
+                            onChange={(e) => setNewStory(e.target.value)}
+                            placeholder="כתוב סיפור חדש..."
+                        ></textarea>
+                        <button onClick={handlePublish} className="publish_btn">
+                            פרסם
+                        </button>
+                    </div>
+                )}
+                {!user && (
+                    <p>
+                        <FormattedMessage id="blog.loginToPublish" />.
+                    </p>
+                )}
+                <h1 className="blog_title">{title}</h1>
+                <div className="blog_search_container">
+                    <label>
+                        <FormattedMessage id="blog.search.label" />
+                    </label>
                     <Select
                         options={soldiers}
-                        value={selectedSoldier}
-                        onChange={handleSelectChange}
+                        value={selectedSoldierForStories}
+                        onChange={handleSelectSoldierForStories}
                         getOptionLabel={(option: Soldier) => option.name}
                         getOptionValue={(option: Soldier) => option.name}
-                        placeholder="בחר חייל..."
-                        className="w-full p-2 border rounded mb-4"
+                        className="blog_search_select"
+                        placeholder=""
                         isClearable
                     />
-
-                    <textarea
-                        className="w-full p-2 border rounded"
-                        rows={3}
-                        value={newStory}
-                        onChange={(e) => setNewStory(e.target.value)}
-                        placeholder="כתוב סיפור חדש..."
-                    ></textarea>
-                    <button onClick={handlePublish} className="mt-2 p-2 bg-blue-500 text-white rounded">
-                        פרסם
-                    </button>
                 </div>
-            )}
-            {!user && (
-                <p>התחבר כדי לפרסם סיפורים חדשים.</p>
-            )}
-            <h1 className="mt-5 text-2xl font-bold mb-4">{title}</h1>
-            <div className="w-100 mb-4">
-                <label className="block mb-2">חפש סיפורים על...</label>
-                <Select
-                    options={soldiers}
-                    value={selectedSoldierForStories}
-                    onChange={handleSelectSoldierForStories}
-                    getOptionLabel={(option: Soldier) => option.name}
-                    getOptionValue={(option: Soldier) => option.name}
-                    placeholder="בחר חלל..."
-                    className="p-2 border rounded mb-4"
-                    isClearable
-                />
-            </div>
-            <div className="w-75 text-center border border-gray-300 p-4">
-                <div>
-                    {filteredStories.length > 0 ? (
-                        filteredStories.map((story, index) => (
-                            <StoryCard
-                                story_id={story._id!}
-                                key={index}
-                                user_name={story.user_name}
-                                soldier_name={story.soldier.name}
-                                image={story.soldier.image}
-                                content={story.content}
-                                initialReplies={story.replies.map(reply => ({
-                                    user_name: reply.user_name,
-                                    content: reply.content,
-                                    story_id: story._id!
-                                }))}
-                            />
-                        ))
-                    ) : (
-                        <p>No stories found.</p>
-                    )}
+                <div className="blog_content">
+                    <div>
+                        {filteredStories.length > 0 ? (
+                            filteredStories.map((story, index) => (
+                                <StoryCard
+                                    story_id={story._id!}
+                                    key={index}
+                                    user_name={story.user_name}
+                                    soldier_name={story.soldier.name}
+                                    image={story.soldier.image}
+                                    content={story.content}
+                                    initialReplies={story.replies.map(reply => ({
+                                        user_name: reply.user_name,
+                                        content: reply.content,
+                                        story_id: story._id!
+                                    }))}
+                                />
+                            ))
+                        ) : (
+                            <p>
+                                <FormattedMessage id="blog.noStories" />.
+                            </p>
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
+        </MessagesContainer>
     );
 };
 

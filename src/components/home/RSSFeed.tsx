@@ -1,7 +1,9 @@
 'use client';
 import { useEffect, useState } from 'react';
+import './RSSFeed.css';
+import AppLink from "@/components/common/AppLink";
 
-export default function RSSFeed() {
+export default function RSSFeed({locale}: {locale: string}) {
     const [rssFeed, setRssFeed] = useState([]);
 
     useEffect(() => {
@@ -27,15 +29,15 @@ export default function RSSFeed() {
     }, []);
 
     return (
-        <div id="rss_feed" className="mb-4 text-center h-48 overflow-y-auto border border-gray-300 shadow-lg p-4 rounded-lg w-25">
-            <span className="block mb-2 font-bold">* עדכוני חדשות בזמן אמת *</span>
+        <div className="feed">
+            <span className="rss_header">* עדכוני חדשות בזמן אמת *</span>
             <div>
                 {rssFeed.length > 0 ? (
                     rssFeed.map((item: {link: string | undefined, title: any}, index) => (
-                        <div key={index} className="my-2">
-                            <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        <div key={index} className="rss_link_container">
+                            <AppLink href={item.link!} locale={locale}>
                                 {item.title}
-                            </a>
+                            </AppLink>
                         </div>
                     ))
                 ) : (

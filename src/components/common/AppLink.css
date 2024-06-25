@@ -1,0 +1,15 @@
+.link {
+    color: #00f3aa;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    display: block;
+    margin: 0.5rem;
+}
+
+.link:hover {
+    color: #00b37d;
+    border-bottom-color: #00b37d;
+}

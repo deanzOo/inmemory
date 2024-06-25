@@ -4,6 +4,7 @@ import AppLink from "@/components/common/AppLink";
 import {i18n} from "@/i18n-config";
 import {FormattedMessage} from "react-intl";
 import MessagesContainer from "@/components/common/MessagesContainer";
+import './SearchBar.css'
 
 interface SearchBarProps {
     width: string;
@@ -45,31 +46,31 @@ const SearchBar: React.FC<SearchBarProps> = ({ width, apiEndpoint, locale }) => 
     const base_href = locale === defaultLocale ? `/${locale}/soldier/` : `/soldier/`;
     return (
 
-        <div style={{ width }}>
-            <MessagesContainer locale={locale}>
-                <span className="link px-2 block m-2">
-                    <FormattedMessage id="search.placeholder" />
-                </span>
-            </MessagesContainer>
-            <label htmlFor="search" className="sr-only">
-            </label>
-            <input
-                type="text"
-                value={searchTerm}
-                onChange={handleChange}
-                style={{ width: '100%', padding: '8px' }}
-                className="rounded border-gray-300 border-2"
-            />
-            <ul className="bg-gray-800">
-                {results.map((result, index) => (
-                    <li key={index}>
-                        <AppLink locale={locale} href={`${base_href}${result._id}`}>
-                            {result.name}
-                        </AppLink>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <MessagesContainer locale={locale}>
+            <div style={{ width }}>
+                    <span className="link searchPlaceholder">
+                        <FormattedMessage id="search.placeholder" />
+                    </span>
+                <label htmlFor="search" className="sr-only">
+                </label>
+                <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={handleChange}
+                    style={{ width: '100%', padding: '8px' }}
+                    className="searchInput"
+                />
+                <ul className="resultBox">
+                    {results.map((result, index) => (
+                        <li key={index}>
+                            <AppLink locale={locale} href={`${base_href}${result._id}`}>
+                                {result.name}
+                            </AppLink>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </MessagesContainer>
     );
 };
 
