@@ -58,5 +58,12 @@
   "blog.publish.label": "כתוב על",
   "blog.search.label": "חפש סיפורים על...",
   "blog.noStories": "לא נמצאו סיפורים",
-  "blog.loginToPublish": "התחבר כדי לפרסם סיפור"
+  "blog.loginToPublish": "התחבר כדי לפרסם סיפור",
+  "blog.publish": "פרסם",
+  "blog.publishNewStory": "פרסם סיפור חדש",
+  "storyCard.writtenBy": "נכתב על ידי",
+  "storyCard.soldierName": "שם החייל",
+  "storyCard.replies": "תגובות",
+  "storyCard.addReply": "הוסף תגובה",
+  "storyCard.loginToAddReply": "התחבר כדי להוסיף תגובה"
 }

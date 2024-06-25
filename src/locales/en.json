@@ -51,5 +51,12 @@
   "blog.publish.label": "Write about",
   "blog.search.label": "Search stories about...",
   "blog.noStories": "No stories found",
-  "blog.loginToPublish": "Login to publish a story"
+  "blog.loginToPublish": "Login to publish a story",
+  "blog.publish": "Publish",
+  "blog.publishNewStory": "Publish a new story",
+  "storyCard.writtenBy": "Written by",
+  "storyCard.soldierName": "Soldier name",
+  "storyCard.replies": "Replies",
+  "storyCard.addReply": "Add a reply",
+  "storyCard.loginToAddReply": "Login to add a reply"
 }
