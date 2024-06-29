@@ -12,11 +12,12 @@ interface SoldierComponentProps {
     id: string;
     stories_title: string;
     candle_title: string;
+    locale: string;
 }
 
 type SoldierWithStories = Soldier & { stories: Story[] };
 
-const SoldierComponent = ({ id, stories_title, candle_title }: SoldierComponentProps) => {
+const SoldierComponent = ({ id, stories_title, candle_title, locale }: SoldierComponentProps) => {
     const [soldier, setSoldier] = useState<SoldierWithStories | null>(null);
     const [candleLit, setCandleLit] = useState<boolean>(false);
 
@@ -41,13 +42,8 @@ const SoldierComponent = ({ id, stories_title, candle_title }: SoldierComponentP
             setCandleLit(Cookies.get(`candle_${id}`) === 'lit');
         };
 
-        loadSoldier();
+        loadSoldier().then(r => r);
     }, [id]);
-
-    const handleCandleClick = () => {
-        setCandleLit(!candleLit);
-        Cookies.set(`candle_${id}`, !candleLit ? 'lit' : 'unlit', { expires: 1 });
-    };
 
     if (!soldier) return <div>Loading...</div>;
 
@@ -79,6 +75,7 @@ const SoldierComponent = ({ id, stories_title, candle_title }: SoldierComponentP
                             content={story.content}
                             initialReplies={story.replies}
                             story_id={story._id!}
+                            locale={locale}
                         />
                     </div>
                 ))}

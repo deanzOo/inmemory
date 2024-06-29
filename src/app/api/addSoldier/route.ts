@@ -5,9 +5,9 @@ import Soldier from "@/models/Soldier";
 export async function POST(req: NextRequest, res: NextResponse) {
     await connectToDatabase();
     const body = await req.json();
-    const { name, rank, unit, dateOfDeath, image } = body;
+    const { user_name, name, rank, unit, dateOfDeath, image } = body;
 
-    if (!name || !rank || !unit || !dateOfDeath || !image) {
+    if (!user_name || !name || !rank || !unit || !dateOfDeath || !image) {
         return NextResponse.json({ message: 'All fields are required' }, { status: 400 });
     }
 
@@ -22,6 +22,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         unit,
         dateOfDeath,
         image,
+        published_by: user_name,
         createdAt: new Date(),
     });
     try {

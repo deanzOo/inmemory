@@ -6,7 +6,7 @@ import {NextApiRequest} from "next";
 export async function GET(req: NextApiRequest) {
     await connectToDatabase();
     try {
-        const stories = await Story.find();
+        const stories = await Story.find({ approved: true });
 
         return NextResponse.json({ stories }, { status: 200 });
     } catch (error) {

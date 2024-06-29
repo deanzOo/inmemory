@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import seedAdmin from './seedAdmin';
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -20,6 +21,7 @@ async function connectToDatabase() {
         });
     }
     (global as any).mongoose.conn = await (global as any).mongoose.promise;
+    await seedAdmin();
     return (global as any).mongoose.conn;
 }
 

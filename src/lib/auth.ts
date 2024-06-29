@@ -9,6 +9,7 @@ if (!JWT_SECRET) {
 export interface UserPayload extends JWTPayload {
     userId: string;
     username: string;
+    admin: boolean;
 }
 
 export async function verifyToken(token: string): Promise<UserPayload | null> {

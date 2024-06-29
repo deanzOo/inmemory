@@ -8,6 +8,7 @@ import './Sidebar.css';
 
 export default function Sidebar({ locale }: { locale: string }) {
     const { user } = useAuth();
+    console.log(user);
     return (
         <MessagesContainer locale={locale}>
             <div className="sidebarContainer">
@@ -28,6 +29,11 @@ export default function Sidebar({ locale }: { locale: string }) {
                         {user && (
                             <AppLink href='/addSoldier' locale={locale}>
                                 <FormattedMessage id="layout.sidebar.link.addsoldier"/>
+                            </AppLink>
+                        )}
+                        {user && user.admin && (
+                            <AppLink href='/admin' locale={locale}>
+                                <FormattedMessage id="layout.sidebar.link.admin"/>
                             </AppLink>
                         )}
 

@@ -5,7 +5,8 @@ const StorySchema = new mongoose.Schema({
     user_name: { type: String, required: true },
     soldier: { name: { type: String, required: true }, image: { type: String, required: true } },
     family: { type: Boolean, default: false },
-    replies: { type: Array, default: [] }
+    replies: { type: Array, default: [] },
+    approved: { type: Boolean, default: false }
 });
 
 const Story = mongoose.models.Story || mongoose.model('Story', StorySchema);

@@ -30,7 +30,7 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: 'Invalid username or password' }, { status: 401 });
     }
 
-    const token = await new SignJWT({ userId: user._id, username: user.username })
+    const token = await new SignJWT({ userId: user._id, username: user.username, admin: user.admin})
         .setProtectedHeader({ alg: 'HS256' })
         .setExpirationTime('1d')
         .sign(new TextEncoder().encode(JWT_SECRET));

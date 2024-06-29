@@ -7,6 +7,8 @@ const SoldierSchema = new mongoose.Schema({
     dateOfDeath: { type: Date, required: true },
     image: { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
+    approved: { type: Boolean, default: false },
+    published_by: { type: String, required: true }
 });
 
 const Soldier = mongoose.models.Soldier || mongoose.model('Soldier', SoldierSchema);

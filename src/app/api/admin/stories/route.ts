@@ -3,11 +3,15 @@ import connectToDatabase from "@/lib/mongodb";
 import Story from "@/models/Story";
 import {NextApiRequest} from "next";
 
-export async function GET(req: NextApiRequest, {params}: {params: {soldier_id: string}}) {
+export async function GET(req: NextApiRequest) {
     await connectToDatabase();
-    const {soldier_id} = params;
     try {
-        const stories = await Story.find({soldier_id, approved: true});
+        const stories = await Story.find({
+            $or: [
+                {approved: false},
+                {approved: {$exists: false}}
+            ]
+        });
 
         return NextResponse.json({ stories }, { status: 200 });
     } catch (error) {

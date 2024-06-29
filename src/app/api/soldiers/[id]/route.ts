@@ -8,6 +8,9 @@ export async function GET(req: NextApiRequest, {params}: {params: {id: string}})
     const { id } = params;
     try {
         const soldier = await Soldier.findById(id);
+        if (!soldier || !soldier.approved) {
+            return NextResponse.json({ message: 'Soldier not found' }, { status: 404 });
+        }
 
         return NextResponse.json({ soldier }, { status: 200 });
     } catch (error) {

@@ -5,6 +5,7 @@ export interface Soldier {
     image: string;
     unit: string;
     dateOfDeath: string;
+    published_by: string;
 }
 
 export interface Story {
@@ -21,6 +22,7 @@ export interface Story {
 }
 
 export interface User {
+    _id: string;
     userId: string;
     username: string;
 }

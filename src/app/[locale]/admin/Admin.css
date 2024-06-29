@@ -1,0 +1,113 @@
+.adminContainer {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem 1rem;
+}
+
+.adminHeader {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.userBanContainer {
+    margin-bottom: 1rem;
+}
+
+.userBanSelect {
+    padding: 0.5rem 0.75rem;
+    border-width: 1px;
+    border-radius: 0.375rem;
+    background-color: rgb(243 244 246);
+}
+
+.userBanButton {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: rgb(239 68 68);
+    color: rgb(255 255 255);
+    border-radius: 0.375rem;
+}
+
+.outerTableContainer {
+    margin-bottom: 2rem;
+}
+
+.tableTitle {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.tableContainer {
+    overflow-x: auto;
+}
+
+.table {
+    min-width: 100%;
+    border-top-width: 1px;
+    border-bottom-width: 0;
+    border-color: rgb(229 231 235);
+}
+
+.tableHeaderContainer {
+    background-color: rgb(249 250 251);
+}
+
+.tableHeader {
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+    color: rgb(107 114 128);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tableBodyContainer {
+    background-color: rgb(255 255 255);
+    border-top-width: 1px;
+    border-bottom-width: 0;
+    border-color: rgb(229 231 235);
+}
+
+.tableRow:hover {
+    background-color: rgb(243 244 246);
+}
+
+.tableCell {
+    padding: 1rem 1.5rem;
+    white-space: nowrap;
+}
+
+.buttonApprove {
+    color: rgb(22 163 74);
+    margin-right: 0.5rem;
+}
+
+.buttonApprove:hover {
+    color: rgb(22 101 52);
+}
+
+.buttonDeny {
+    color: rgb(220 38 38);
+}
+
+.buttonDeny:hover {
+    color: rgb(153 27 27);
+}
+
+.tableImage {
+    border-radius: 9999px;
+}
+
+@media (min-width: 640px) {
+    .adminContainer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
