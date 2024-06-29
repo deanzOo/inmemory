@@ -5,6 +5,7 @@ import {Soldier, Story, User} from "@/lib/types";
 import Image from "next/image";
 import MessagesContainer from "@/components/common/MessagesContainer";
 import {FormattedMessage} from "react-intl";
+import {formatDate} from "@/lib/helpers";
 
 export default function Admin({params: {locale}}: { params: { locale: string } }) {
     const [soldiers, setSoldiers] = useState<Soldier[]>([]);
@@ -149,7 +150,6 @@ export default function Admin({params: {locale}}: { params: { locale: string } }
                                 <th scope="col"
                                     className="tableHeader">
                                     <FormattedMessage id="page.admin.table.header.date" />
-                                    of Death
                                 </th>
                                 <th scope="col"
                                     className="tableHeader">
@@ -171,7 +171,7 @@ export default function Admin({params: {locale}}: { params: { locale: string } }
                                     <td className="tableCell">{soldier.name}</td>
                                     <td className="tableCell">{soldier.rank}</td>
                                     <td className="tableCell">{soldier.unit}</td>
-                                    <td className="tableCell">{soldier.dateOfDeath}</td>
+                                    <td className="tableCell">{formatDate(soldier.dateOfDeath)}</td>
                                     <td className="tableCell">
                                         <Image
                                             src={soldier.image}

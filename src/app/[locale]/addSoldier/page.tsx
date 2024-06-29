@@ -4,6 +4,7 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import MessagesContainer from "@/components/common/MessagesContainer";
 import {FormattedMessage} from "react-intl";
 import './addSoldier.css';
+import {useAuth} from "@/context/AuthContext";
 
 interface FormData {
     name: string;
@@ -11,6 +12,7 @@ interface FormData {
     unit: string;
     dateOfDeath: string;
     image: string;
+    user_name: string;
 }
 
 type AddSoldierProps = {
@@ -24,8 +26,12 @@ export default function AddSoldier({ params: { locale } }: AddSoldierProps) {
         unit: '',
         dateOfDeath: '',
         image: '',
+        user_name: ''
     });
-    const [message, setMessage] = useState('');
+    const [successfullyPublished, setSuccessfullyPublished] = useState(false);
+    const [failedPublish, setFailedPublish] = useState(false);
+    const [errorCode, setErrorCode] = useState(0);
+    const { user } = useAuth();
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
@@ -38,27 +44,31 @@ export default function AddSoldier({ params: { locale } }: AddSoldierProps) {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        formData.user_name = user?.username!;
         const response = await fetch(`api/addSoldier`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': process.env.NEXT_PUBLIC_API_SECRET!
             },
             body: JSON.stringify(formData),
         });
 
         if (response.ok) {
             const result = await response.json();
-            setMessage('Soldier added successfully! חייל נוסף בהצלחה!');
+            setSuccessfullyPublished(true);
             setFormData({
                 name: '',
                 rank: '',
                 unit: '',
                 dateOfDeath: '',
                 image: '',
+                user_name: ''
             });
         } else {
             const error = await response.json();
-            setMessage(`שגיאה: ${error.message}`);
+            setFailedPublish(true);
+            setErrorCode(error.code);
         }
     };
 
@@ -67,7 +77,16 @@ export default function AddSoldier({ params: { locale } }: AddSoldierProps) {
             <div className="addSoldierContainer">
                     <FormattedMessage tagName="h1" id="page.addSoldier.title" />
                 <div className="formContainer">
-                    <span>{message}</span>
+                    {successfullyPublished &&
+                        <span className="success_message">
+                            <FormattedMessage tagName="span" id="page.addSoldier.success_message" />
+                        </span>
+                    }
+                    {failedPublish &&
+                        <span className="error_message">
+                            <FormattedMessage id={"page.addSoldier.error_message_" + errorCode} />
+                        </span>
+                    }
                     <form onSubmit={handleSubmit}>
                         <div className="inputContainer">
                             <label htmlFor="name">

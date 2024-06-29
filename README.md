@@ -23,7 +23,6 @@ This project aims to honor and remember the brave soldiers who sacrificed their 
 - **Frontend:**
     - Next.js (React framework)
     - TypeScript
-    - Tailwind CSS
 
 - **Backend:**
     - Node.js
@@ -43,6 +42,7 @@ This project aims to honor and remember the brave soldiers who sacrificed their 
     MONGODB_URI=your_mongodb_uri
     JWT_SECRET=your_jwt_secret
     NEXT_PUBLIC_API_SECRET=your_api_secret
+    ADMIN_PASSWORD=your_admin_password
     ```
 3. Install dependencies:
     ```bash
@@ -71,7 +71,6 @@ inmemory/
 │   ├── lib/                        # Utility functions
 │   ├── locales/                    # Localization files
 │   ├── models/                     # Mongoose models
-│   ├── styles/                     # Tailwind CSS styles
 │   └── context/                    # React context
 ├── public/                         # Public assets
 ├── .gitignore

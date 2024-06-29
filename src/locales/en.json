@@ -78,5 +78,9 @@
   "page.admin.table.header.soldier": "Soldier",
   "page.admin.table.header.family": "Is Family Story",
   "page.admin.table.yes_label": "Yes",
-  "page.admin.table.no_label": "No"
+  "page.admin.table.no_label": "No",
+  "page.addSoldier.success_message": "Information published to be reviewed by the admin",
+  "page.addSoldier.error_message_1": "All fields are required",
+  "page.addSoldier.error_message_2": "Soldier already exists in system",
+  "page.addSoldier.error_message_3": "Unknown error, contact admin"
 }

@@ -85,5 +85,9 @@
   "page.admin.table.header.soldier": "חייל",
   "page.admin.table.header.family": "סיפור משפחתי",
   "page.admin.table.yes_label": "כן",
-  "page.admin.table.no_label": "לא"
+  "page.admin.table.no_label": "לא",
+  "page.addSoldier.success_message": "המידע פורסם לבדיקת מנהל האתר",
+  "page.addSoldier.error_message_1": "כל השדות הינם שדות חובה",
+  "page.addSoldier.error_message_2": "החייל כבר קיים במערכת",
+  "page.addSoldier.error_message_3": "שגיאה לא ידועה - פנה למנהל"
 }
