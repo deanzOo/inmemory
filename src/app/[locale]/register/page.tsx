@@ -24,7 +24,20 @@ export default function RegisterPage({params: {locale}}: {params: {locale: strin
         });
 
         if (res.ok) {
-            push('/login');
+            // try to automatically login
+            const loginRes = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': process.env.NEXT_PUBLIC_API_SECRET!
+                },
+                body: JSON.stringify({ username, password })
+            });
+            if (loginRes.ok) {
+                window.location.href = '/';  // Redirect to home or dashboard
+            } else {
+                push('/login');
+            }
         } else {
             setError('משתמש תפוס ' + (await res.json()).error || 'שגיאה לא ידועה');
         }
