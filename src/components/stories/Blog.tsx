@@ -16,6 +16,7 @@ const Blog = ({ title, family, locale }: {title: string, family: boolean, locale
     const [stories, setStories] = useState<Story[]>([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedSoldierForStories, setSelectedSoldierForStories] = useState<Soldier | null>(null);
+    const [publishedMessage, setPublishMessage] = useState(false);
 
     useEffect(() => {
         async function fetchSoldiers() {
@@ -42,7 +43,7 @@ const Blog = ({ title, family, locale }: {title: string, family: boolean, locale
 
 
     const handlePublish = async (newStory: Story) => {
-        setStories([newStory, ...stories]);
+        setPublishMessage(true);
         setModalOpen(false);
     };
 
@@ -63,17 +64,24 @@ const Blog = ({ title, family, locale }: {title: string, family: boolean, locale
         <MessagesContainer locale={locale}>
             <div className="blogContent">
                 {user && (
-                    <div className="publish_container">
-                        <button onClick={() => setModalOpen(true)} className="publish_button">
-                            <FormattedMessage id="blog.publishNewStory" />
-                        </button>
-                        <PublishModal
-                            isOpen={isModalOpen}
-                            onClose={() => setModalOpen(false)}
-                            onSubmit={handlePublish}
-                            family={family}
-                            soldiers={soldiers}
-                        />
+                    <div>
+                        <div className="publish_container">
+                            <button onClick={() => setModalOpen(true)} className="publish_button">
+                                <FormattedMessage id="blog.publishNewStory" />
+                            </button>
+                            <PublishModal
+                                isOpen={isModalOpen}
+                                onClose={() => setModalOpen(false)}
+                                onSubmit={handlePublish}
+                                family={family}
+                                soldiers={soldiers}
+                            />
+                        </div>
+                        {publishedMessage && (
+                            <span className="publish_success_message">
+                                <FormattedMessage id="blog.publishSuccessMessage" />
+                            </span>
+                        )}
                     </div>
                 )}
                 <div className={isModalOpen ? 'blur' : ''}>

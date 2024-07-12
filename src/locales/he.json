@@ -89,5 +89,6 @@
   "page.addSoldier.success_message": "המידע פורסם לבדיקת מנהל האתר",
   "page.addSoldier.error_message_1": "כל השדות הינם שדות חובה",
   "page.addSoldier.error_message_2": "החייל כבר קיים במערכת",
-  "page.addSoldier.error_message_3": "שגיאה לא ידועה - פנה למנהל"
+  "page.addSoldier.error_message_3": "שגיאה לא ידועה - פנה למנהל",
+  "blog.publishSuccessMessage": "הסיפור פורסם בהצלחה. יהיה זמין לאחר אישור מנהל האתר"
 }

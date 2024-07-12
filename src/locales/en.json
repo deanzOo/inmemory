@@ -82,5 +82,6 @@
   "page.addSoldier.success_message": "Information published to be reviewed by the admin",
   "page.addSoldier.error_message_1": "All fields are required",
   "page.addSoldier.error_message_2": "Soldier already exists in system",
-  "page.addSoldier.error_message_3": "Unknown error, contact admin"
+  "page.addSoldier.error_message_3": "Unknown error, contact admin",
+  "blog.publishSuccessMessage": "Story published successfully. It will be available after admin approval"
 }

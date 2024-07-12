@@ -95,3 +95,9 @@
     color: rgb(255 255 255);
     border-radius: 0.25rem;
 }
+
+.publish_success_message {
+    color: rgb(16 185 129);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
