@@ -54,3 +54,11 @@
  .loginButton:hover {
      background-color: rgb(37 99 235);
  }
+
+ .error {
+    color: rgb(220 38 38);
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+ }

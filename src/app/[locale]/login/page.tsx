@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './Login.css'
 import MessagesContainer from "@/components/common/MessagesContainer";
 import {FormattedMessage} from "react-intl";
@@ -35,6 +35,7 @@ export default function LoginPage({params: {locale}}: {params: {locale: string}}
                         <h1 className="loginHeader">
                             <FormattedMessage id="page.login.login.label" />
                         </h1>
+                        <span className="error">{error}</span>
                         <form onSubmit={handleSubmit}>
                             <div className="loginInputContainer">
                                 <label className="loginInputHeader">

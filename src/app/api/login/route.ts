@@ -20,7 +20,7 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: 'Username and password are required' }, { status: 400 });
     }
 
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ username, banned: false });
     if (!user) {
         return NextResponse.json({ error: 'Invalid username or password' }, { status: 401 });
     }
