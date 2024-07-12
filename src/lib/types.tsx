@@ -15,7 +15,7 @@ export interface Story {
         name: string,
         image: string,
     };
-    solder_id: string,
+    soldier_id: string,
     content: string;
     family: boolean;
     replies: { story_id: string, content: string; user_name: string; }[];

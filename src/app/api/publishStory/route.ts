@@ -4,19 +4,14 @@ import Story from "@/models/Story";
 
 export async function POST(req: Request) {
     await connectToDatabase();
-    const {
-        user_name,
-        soldier,
-        content,
-        family,
-        replies
-    } = await req.json();
+    const data = await req.json();
     const newStory = new Story({
-        user_name,
-        soldier,
-        content,
-        family,
-        replies
+        user_name: data.user_name,
+        soldier: data.soldier,
+        soldier_id: data.soldier_id,
+        content: data.content,
+        family: data.family,
+        replies: data.replies
     });
 
     try {
@@ -24,6 +19,6 @@ export async function POST(req: Request) {
         return NextResponse.json({message: 'Story published successfully'});
     } catch (error) {
         console.log(error)
-        return NextResponse.json({error: 'Error publishing story'}, {status: 500});
+        return NextResponse.json({error: 'error.publishing.story'}, {status: 500});
     }
 }

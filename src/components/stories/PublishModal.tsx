@@ -4,6 +4,7 @@ import Select from "react-select";
 import {Soldier, Story} from "@/lib/types";
 import {useAuth} from "@/context/AuthContext";
 import './PublishModal.css'
+import {Form} from "react-bootstrap";
 
 const PublishModal = ({ isOpen, onClose, onSubmit, family, soldiers }: { isOpen: boolean, onClose: () => void, onSubmit: (story: Story) => void,  family: boolean, soldiers: Soldier[]}) => {
     const { user } = useAuth();
@@ -34,7 +35,7 @@ const PublishModal = ({ isOpen, onClose, onSubmit, family, soldiers }: { isOpen:
                     name: selectedSoldier.name,
                     image: selectedSoldier.image,
                 },
-                solder_id: selectedSoldier._id,
+                soldier_id: selectedSoldier._id,
                 content: newStory,
                 family: family,
                 replies: []
@@ -52,7 +53,7 @@ const PublishModal = ({ isOpen, onClose, onSubmit, family, soldiers }: { isOpen:
                 onSubmit(newStoryObject);
                 setNewStory('');
             } else {
-                setError('כישלון: ' + (await res.json()).error || 'שגיאה לא ידועה');
+                setError((await res.json()).error);
             }
         }
     };
@@ -61,7 +62,11 @@ const PublishModal = ({ isOpen, onClose, onSubmit, family, soldiers }: { isOpen:
 
     return (
         <div className="modal-overlay" onClick={handleOverlayClick}>
-            <span>{error}</span>
+            {error != '' && (
+                <span className="error">
+                    <FormattedMessage id={error}/>
+                </span>
+            )}
             <div className="modal">
                 <button className="modal-close" onClick={handleConfirmation}>X</button>
 
