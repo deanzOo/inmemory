@@ -2,19 +2,14 @@
 const nextConfig = {
     env: {
         MONGODB_URI: process.env.MONGODB_URI,
-        JWT_SECRET: process.env.JWT_SECRET
+        JWT_SECRET: process.env.JWT_SECRET,
+        ADMIN_PASSWORD: process.env.ADMIN_PASSWORD
     },
     images: {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'static.wixstatic.com',
-                port: '',
-            },
-            {
-                protocol: 'https',
-                'hostname': 'www.idf.il',
-                port: ''
+                hostname: '**',
             }
         ]
     },

@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import {router} from "next/client";
+import React, { useState } from 'react';
+import {useRouter} from "next/navigation";
 import MessagesContainer from "@/components/common/MessagesContainer";
 import './Register.css'
 import {FormattedMessage} from "react-intl";
@@ -10,6 +10,7 @@ export default function RegisterPage({params: {locale}}: {params: {locale: strin
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const { push } = useRouter();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -23,7 +24,7 @@ export default function RegisterPage({params: {locale}}: {params: {locale: strin
         });
 
         if (res.ok) {
-            await router.push('/login');
+            push('/login');
         } else {
             setError('משתמש תפוס ' + (await res.json()).error || 'שגיאה לא ידועה');
         }
