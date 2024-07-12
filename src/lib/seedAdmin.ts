@@ -5,7 +5,6 @@ export default async function seedAdmin() {
     const password = process.env.ADMIN_PASSWORD;
     const existingUser = await User.findOne({ username });
     if (existingUser) {
-        console.log('Admin user already exists');
         return;
     }
     const hashedPassword = await bcrypt.hash(password, 10);
