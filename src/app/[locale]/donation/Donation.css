@@ -1,8 +1,9 @@
 .form_container {
     padding: 1.5rem;
-    max-width: 32rem;
-    margin-left: auto;
-    margin-right: auto;
+    overflow-y: scroll;
+    width: 100%;
+    margin: auto;
+    height: 100%;
 }
 
 .form_header {

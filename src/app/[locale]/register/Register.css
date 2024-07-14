@@ -3,7 +3,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    overflow-y: scroll;
+    height: 100%;
     background-color: rgb(243 244 246);
     width: 100% !important;
     margin: auto;

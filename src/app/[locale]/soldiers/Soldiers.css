@@ -4,6 +4,7 @@
     margin-left: auto;
     margin-top: 2.5rem;
     text-align: center;
+    overflow-y: scroll;
 }
 
 .gallery_header {

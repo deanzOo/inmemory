@@ -47,7 +47,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ width, apiEndpoint, locale }) => 
     return (
 
         <MessagesContainer locale={locale}>
-            <div style={{ width }}>
+            <div style={{ width: width }}>
                     <span className="link searchPlaceholder">
                         <FormattedMessage id="search.placeholder" />
                     </span>
@@ -57,7 +57,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ width, apiEndpoint, locale }) => 
                     type="text"
                     value={searchTerm}
                     onChange={handleChange}
-                    style={{ width: '100%', padding: '8px' }}
+                    style={{ width: width, padding: '8px' }}
                     className="searchInput"
                 />
                 <ul className="resultBox">
